@@ -4,6 +4,10 @@ Plugins are signed JavaScript packages. Multiplexr controls installation, permis
 
 ## Start with an example
 
+For a new plugin repository, choose **Use this template** on [multiplexr-plugin-template](https://github.com/bugdeployer/multiplexr-plugin-template). It includes a settings example, build/signing scripts, tests and release automation.
+
+To try the examples included in the SDK:
+
 Use Node.js 22 or newer:
 
 ```sh
