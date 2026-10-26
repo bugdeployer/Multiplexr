@@ -123,6 +123,24 @@
                     "org.multiplexr:library.changed"
                   ]
                 }
+              },
+              "kinds": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 8,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "movie",
+                    "television",
+                    "video",
+                    "musicTrack",
+                    "musicAlbum",
+                    "audiobook",
+                    "ebook",
+                    "comic"
+                  ]
+                }
               }
             },
             "required": [
@@ -143,6 +161,20 @@
                   "properties": {
                     "family": {
                       "const": "event.handler"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "required": [
+                    "kinds"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "family": {
+                      "const": "metadata.provider"
                     }
                   }
                 }

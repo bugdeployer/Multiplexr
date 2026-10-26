@@ -1,6 +1,6 @@
 {
   "name": "multiplexr_plugin_sdk",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Reusable AppShell protocol-1 plugin SDK; compatible Multiplexr host profile",
   "private": true,
   "type": "module",
@@ -39,7 +39,7 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "ajv": "^8.17.1",
+    "ajv": "^8.20.0",
     "typescript": "^5.9.3"
   },
   "license": "GPL-3.0-only"

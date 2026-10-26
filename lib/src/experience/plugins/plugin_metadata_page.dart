@@ -39,7 +39,14 @@ class _PluginMetadataPageState extends State<PluginMetadataPage> {
   List<PluginContribution> get providers =>
       manager?.registry
           .family('metadata.provider')
-          .where((c) => c.plugin.collections.contains(widget.collection))
+          .where(
+            (c) =>
+                c.plugin.collections.contains(widget.collection) &&
+                ((c.definition['kinds'] as List?)?.contains(
+                      widget.entity.name,
+                    ) ??
+                    true),
+          )
           .toList() ??
       [];
   @override
@@ -85,10 +92,19 @@ class _PluginMetadataPageState extends State<PluginMetadataPage> {
           error = null;
         });
       }
-    } catch (_) {
+    } catch (failure) {
       if (mounted) {
         setState(
-          () => error = 'Search failed or provider access ended. Retry after checking plugin access.',
+          () => error = switch (failure) {
+            MetadataFailure(:final message) => message,
+            PluginDenied(code: 'permission_denied') => 'Check collection access and the provider credential in Plugins & themes.',
+            PluginDenied(code: 'resource_limit') =>
+              'The provider is rate limiting requests. Try again later.',
+            PluginDenied(code: 'deadline_exceeded') =>
+              'The provider took too long. Try again.',
+            PluginDenied(code: 'invalid_response') => 'The provider returned an invalid response. Check for a plugin update.',
+            _ => 'The provider could not complete the search. Check your connection and plugin setup.',
+          },
         );
       }
     } finally {

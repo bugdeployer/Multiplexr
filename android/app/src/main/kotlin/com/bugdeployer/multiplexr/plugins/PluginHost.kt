@@ -9,6 +9,8 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.util.concurrent.Executors
 
+private class PluginEffectFailure(val code: String) : RuntimeException()
+
 internal class PluginHost(private val activity: Activity, private val channel: MethodChannel) {
     private val main = Handler(Looper.getMainLooper())
     private val worker = Executors.newFixedThreadPool(4)
@@ -48,7 +50,7 @@ internal class PluginHost(private val activity: Activity, private val channel: M
                     val value: Any? = when(call.method) {
                         "list" -> store.inventory()
                         "status" -> store.recovery()
-                        "stageUrl" -> { val url = args["url"] as String; val origin = java.net.URI(url).let { "https://" + it.host }; val data = http.get(url,setOf(origin),maximum = PluginPackage.MAX_BYTES,register = { require(calls.size < 8);calls.add(it) },unregister = { calls.remove(it) }, check = { check(!closed) }); require(data["status"] == 200); store.stage((data["body"] as String).toByteArray(Charsets.UTF_8)) }
+                        "stageUrl" -> { val url = args["url"] as String; val data = http.get(url,PluginNetworkPolicy.packageOrigins(url),maximum = PluginPackage.MAX_BYTES,register = { require(calls.size < 8);calls.add(it) },unregister = { calls.remove(it) }, check = { check(!closed) }); require(data["status"] == 200); store.stage((data["body"] as String).toByteArray(Charsets.UTF_8)) }
                         "discard" -> { store.discard(args["token"] as String); null }
                         "permissions" -> { store.permissions(args["id"] as String,(args["expected"] as Number).toLong(),strings("permissions"),strings("origins"),strings("collections")); null }
                         "activate" -> { store.activate(args["token"] as String,(args["expected"] as Number).toLong(),strings("permissions"),strings("origins"),strings("collections"),args["publisherReviewed"] == true); null }
@@ -93,7 +95,15 @@ internal class PluginHost(private val activity: Activity, private val channel: M
                         else -> error("Unsupported operation")
                     }
                     main.post { if(!closed) { if(mutates) channel.invokeMethod("changed",null); result.success(value) } }
-                } catch(_: Exception) { main.post { if(!closed) result.error("plugin_operation", "Plugin operation rejected. Check permissions, compatibility and package integrity.", null) } } }
+                } catch(error: Exception) {
+                    val code = when(error) {
+                        is PluginEffectFailure -> error.code
+                        is java.io.InterruptedIOException -> "deadline_exceeded"
+                        is java.io.IOException -> "runtime_failure"
+                        else -> "plugin_operation"
+                    }
+                    main.post { if(!closed) result.error(code, "Plugin operation rejected. Check permissions, compatibility and package integrity.", null) }
+                } }
             }
         }
     } }
@@ -179,8 +189,8 @@ internal class PluginHost(private val activity: Activity, private val channel: M
             "authorize" -> true
             "storage.read" -> { require("storage.private" in permissions); store.privateRead(current.id,(params["schema"] as Number).toInt(),params["key"] as String) }
             "storage.write" -> { privateWrite(current,params); null }
-            "http.get" -> { require("http.request" in permissions); val url = params["url"] as String; val origins = PluginPackage.strings(grants.getJSONArray("origins")); val origin = PluginNetworkPolicy.url(url,origins).let { "https://${it.host}" }; val header = if(params["credential"] == true) { require("credentials.use" in permissions); credentials.header(current.id,origin) ?: error("Credential missing") } else null
-                http.get(url,origins,header,register = { require(calls.size < 8);calls.add(it) },unregister = { calls.remove(it) },check = ::access) }
+            "http.get", "http.post" -> { require("http.request" in permissions); val url = params["url"] as String; val origins = PluginPackage.strings(grants.getJSONArray("origins")); val origin = PluginNetworkPolicy.url(url,origins).let { "https://${it.host}" }; val header = if(params["credential"] == true || params["credential"] == "apiKey") { require("credentials.use" in permissions); credentials.header(current.id,origin,params["credential"] == "apiKey") ?: throw PluginEffectFailure("permission_denied") } else null
+                http.get(url,origins,header,register = { require(calls.size < 8);calls.add(it) },unregister = { calls.remove(it) },check = ::access, payload = if(args["method"] == "http.post") params["body"] as String else null) }
             else -> error("Unsupported effect")
         }
     }

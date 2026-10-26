@@ -1,11 +1,18 @@
 package com.bugdeployer.multiplexr.plugins
 
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.net.InetAddress
 import java.net.URI
 import java.util.concurrent.TimeUnit
 
 internal object PluginNetworkPolicy {
+    fun packageOrigins(value: String): Set<String> {
+        val origin = URI(value).let { "https://${it.host}" }
+        url(value, setOf(origin))
+        return if (origin == "https://github.com") setOf(origin, "https://release-assets.githubusercontent.com") else setOf(origin)
+    }
     fun publicAddress(address: InetAddress): Boolean {
         if(address.isAnyLocalAddress || address.isLoopbackAddress || address.isLinkLocalAddress || address.isSiteLocalAddress || address.isMulticastAddress) return false
         val b = address.address.map { it.toInt() and 255 }
@@ -32,17 +39,21 @@ internal class PluginHttp(private val client: OkHttpClient = secureClient()) {
         .proxy(java.net.Proxy.NO_PROXY).connectionPool(ConnectionPool(0, 1, TimeUnit.SECONDS))
         .dns(object: Dns { override fun lookup(hostname: String): List<InetAddress> = InetAddress.getAllByName(hostname).toList().also { values -> require(values.isNotEmpty() && values.all(PluginNetworkPolicy::publicAddress)) { "Private network denied" } } })
         .connectTimeout(5, TimeUnit.SECONDS).readTimeout(5, TimeUnit.SECONDS).callTimeout(10, TimeUnit.SECONDS).build() }
-    fun get(url: String, origins: Set<String>, header: Pair<String,String>? = null, maximum: Int = 65536, binary: Boolean = false, register: (Call) -> Unit, unregister: (Call) -> Unit = {}, check: () -> Unit): Map<String, Any> {
+    fun get(url: String, origins: Set<String>, header: Pair<String,String>? = null, maximum: Int = 65536, binary: Boolean = false, register: (Call) -> Unit, unregister: (Call) -> Unit = {}, check: () -> Unit, payload: String? = null): Map<String, Any> {
+        require(payload == null || payload.toByteArray(Charsets.UTF_8).size <= 8192)
         var destination = PluginNetworkPolicy.url(url, origins)
         val initial = destination.host
         repeat(4) {
             check()
             val builder = Request.Builder().url(destination).get().header("Accept-Encoding", "identity")
+                .header("User-Agent", "Multiplexr/${com.bugdeployer.multiplexr.BuildConfig.VERSION_NAME} (+https://github.com/bugdeployer/Multiplexr)")
+            if (payload != null) builder.post(payload.toRequestBody("application/json; charset=utf-8".toMediaType()))
             if(header != null) { require(destination.host == initial); builder.header(header.first, header.second) }
             val call = client.newCall(builder.build()); register(call)
             try { call.execute().use { response ->
                 check()
                 if(response.code in setOf(301,302,303,307,308)) {
+                    require(payload == null) { "POST redirects denied" }
                     val next = destination.resolve(response.header("Location") ?: error("Missing redirect")) ?: error("Invalid redirect")
                     destination = PluginNetworkPolicy.url(next.toString(), origins)
                     require(header == null || destination.host == initial) { "Credential redirect denied" }

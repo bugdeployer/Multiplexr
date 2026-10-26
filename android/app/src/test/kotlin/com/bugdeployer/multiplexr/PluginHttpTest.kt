@@ -6,6 +6,29 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class PluginHttpTest {
+    @Test fun packageDownloadsAllowOnlyGithubsReleaseAssetRedirect() {
+        assertEquals(setOf("https://github.com", "https://release-assets.githubusercontent.com"), PluginNetworkPolicy.packageOrigins("https://github.com/owner/repo/releases/download/v1/package.json"))
+        assertEquals(setOf("https://example.com"), PluginNetworkPolicy.packageOrigins("https://example.com/package.json"))
+        for (url in listOf("http://github.com/file", "https://github.com.evil.example:8443/file", "https://user:pass@github.com/file")) {
+            try { PluginNetworkPolicy.packageOrigins(url); fail("Expected rejection") } catch (_: IllegalArgumentException) { }
+        }
+    }
+    @Test fun jsonPostUsesHostCredentialAndCannotFollowRedirects() {
+        var calls = 0
+        val http = PluginHttp(client { request ->
+            calls++
+            assertEquals("POST", request.method)
+            assertEquals("private-key", request.header("X-API-Key"))
+            assertTrue(request.header("User-Agent")!!.startsWith("Multiplexr/"))
+            val body = okio.Buffer(); request.body!!.writeTo(body)
+            assertEquals("{\"q\":\"Moon\"}", body.readUtf8())
+            302 to ("/again" to "")
+        })
+        try { http.get("https://example.com", setOf("https://example.com"), "X-API-Key" to "private-key", register={}, check={}, payload="{\"q\":\"Moon\"}"); fail("Expected rejection") } catch (_: IllegalArgumentException) { }
+        assertEquals(1, calls)
+        val response = PluginHttp(client { 200 to (null to "private-key") }).get("https://example.com", setOf("https://example.com"), "X-API-Key" to "private-key", register={}, check={})
+        assertEquals("[redacted]", response["body"])
+    }
     private fun client(handle: (Request)->Pair<Int,Pair<String?,String>>) = OkHttpClient.Builder().addInterceptor { chain ->
         val response=handle(chain.request())
         Response.Builder().request(chain.request()).protocol(Protocol.HTTP_1_1).code(response.first).message("test").body(response.second.second.toResponseBody()).apply { response.second.first?.let { header("Location",it) } }.build()

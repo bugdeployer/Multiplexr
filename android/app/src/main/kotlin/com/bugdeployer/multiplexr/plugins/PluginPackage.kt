@@ -54,7 +54,8 @@ internal data class PluginPackage(val manifest: JSONObject, val code: String, va
             for (i in 0 until contributions.length()) {
                 val c = contributions.getJSONObject(i)
                 require(c.getString("family") in families && c.getString("id").startsWith(manifest.getString("id") + ":") && c.getString("id").substringAfter(":").matches(Regex("[a-z][a-zA-Z0-9_.-]{0,79}")) && ids.add(c.getString("id")) && c.getString("title").length in 1..200)
-                require(c.keys().asSequence().all { it in setOf("id", "family", "title", "description", "icon", "schemaVersion", "scopes", "fields", "handler", "events", "engine", "extensions") })
+                require(c.keys().asSequence().all { it in setOf("id", "family", "title", "description", "icon", "schemaVersion", "scopes", "fields", "handler", "events", "engine", "extensions", "kinds") })
+                if(c.has("kinds")) require(c.getString("family")=="metadata.provider" && strings(c.getJSONArray("kinds")).let { it.isNotEmpty() && it.all { k -> k in setOf("movie","television","video","musicTrack","musicAlbum","audiobook","ebook","comic") } })
                 if(c.has("events")) require(c.getString("family")=="event.handler"&&strings(c.getJSONArray("events")).let { it.isNotEmpty()&&it.size<=2&&it.all { e->e in setOf("org.multiplexr:application.ready","org.multiplexr:library.changed") } })
                 if(c.getString("family")=="media.descriptor") {
                     exact(c,setOf("id","family","title","engine","extensions"))

@@ -11,6 +11,18 @@ import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
 class InstalledPluginTest {
+    @Test fun mediatedNetworkWaitDoesNotConsumeCpuOrOldTwoSecondWallLimit() {
+        val start = android.os.SystemClock.elapsedRealtime()
+        val (value, error) = execute("tool.inspect") { raw, reply ->
+            val request = JSONObject(raw)
+            Handler(Looper.getMainLooper()).postDelayed({
+                reply(JSONObject().put("v",1).put("id",request.getString("id")).put("result",JSONObject().put("protocol",1).put("runtime","slow-network")).toString())
+            }, 3000)
+        }
+        assertNull(error)
+        assertTrue(android.os.SystemClock.elapsedRealtime() - start >= 3000)
+        assertEquals("slow-network", JSONObject(value!!).getJSONObject("result").getString("runtime"))
+    }
     private val instrumentation get() = InstrumentationRegistry.getInstrumentation()
     private val context get() = instrumentation.targetContext
     private fun signed() = instrumentation.context.assets.open("installed-signed.plugin.json").use { it.readBytes() }
@@ -57,6 +69,7 @@ class InstalledPluginTest {
             val vault=PluginCredentials(root);vault.save("org.example.inspector","https://example.com","private-test-token")
             assertFalse(root.listFiles()!!.single().readBytes().toString(Charsets.ISO_8859_1).contains("private-test-token"))
             assertEquals("Bearer private-test-token",vault.header("org.example.inspector","https://example.com")!!.second)
+            assertEquals("X-API-Key" to "private-test-token",vault.header("org.example.inspector","https://example.com",true))
             assertNull(vault.header("org.other.tool","https://example.com"));assertNull(vault.header("org.example.inspector","https://different.example"))
             vault.remove("org.example.inspector",setOf("https://example.com"));assertNull(vault.header("org.example.inspector","https://example.com"))
         } finally { root.deleteRecursively() }

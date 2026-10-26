@@ -12,6 +12,22 @@ test('published manifest schema and semantic validator accept author fixture', (
   assert.equal(manifestSchema(manifest), true, JSON.stringify(manifestSchema.errors));
   validateManifest(manifest);
 });
+
+test('provider kind declarations agree between schema and semantic validator', () => {
+  const value = structuredClone(manifest);
+  value.contributions = [{id:`${value.id}:metadata`, family:'metadata.provider', title:'Books', handler:'metadata.search', kinds:['ebook']}];
+  assert.equal(manifestSchema(value), true);
+  validateManifest(value);
+  for (const kinds of [[], ['ebook','ebook'], ['invented']]) {
+    value.contributions[0].kinds = kinds;
+    assert.equal(manifestSchema(value), false);
+    assert.throws(() => validateManifest(value));
+  }
+  value.contributions[0].kinds = ['ebook'];
+  value.contributions[0].family = 'library.tool';
+  assert.equal(manifestSchema(value), false);
+  assert.throws(() => validateManifest(value));
+});
 test('schemas reject unknown families, credentials defaults and ambiguous envelopes', () => {
   const unknown = structuredClone(manifest); unknown.contributions[0].family = 'native.codec';
   assert.equal(manifestSchema(unknown), false);

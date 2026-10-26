@@ -22,7 +22,7 @@ export async function build(folder, output) {
     .replace(/\r\n/g, '\n')
     .replace(/^import .*;\r?\n/gm, '').replace(/^export /gm, '');
   const author = await boundedFile(manifest.entry, 65536);
-  const code = `const Multiplexr = (() => {\n${sdk}\n${contracts}\nreturn Object.freeze({definePlugin, contribution, request, page, namespacedId, PluginError, Cancellation, negotiate, negotiateCapabilities});\n})();\nconst AppShell = Multiplexr;\n${author}`;
+  const code = `const Multiplexr = (() => {\n${sdk}\n${contracts}\nreturn Object.freeze({definePlugin, contribution, request, page, namespacedId, PluginError, Cancellation, negotiate, negotiateCapabilities, httpJson});\n})();\nconst AppShell = Multiplexr;\n${author}`;
   if (Buffer.byteLength(code) > 65536) throw Error('Bundled program exceeds 64 KiB');
   // Parse without running author code. Imports are deliberately not resolved.
   new Script(code, { filename: 'plugin.js' });

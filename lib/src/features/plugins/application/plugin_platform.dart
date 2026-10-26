@@ -316,7 +316,29 @@ class PluginGateway {
         throw const PluginDenied('invalid_response');
       }
       if (response.containsKey('error')) {
-        throw const PluginDenied('plugin_error');
+        final error = response['error'];
+        const allowed = {
+          'invalid_request',
+          'invalid_response',
+          'version_mismatch',
+          'unsupported_capability',
+          'permission_denied',
+          'not_found',
+          'conflict',
+          'cancelled',
+          'deadline_exceeded',
+          'resource_limit',
+          'message_too_large',
+          'busy',
+          'plugin_error',
+          'runtime_failure',
+        };
+        if (error is! Map ||
+            error.keys.length != 1 ||
+            !allowed.contains(error['code'])) {
+          throw const PluginDenied('invalid_response');
+        }
+        throw PluginDenied(error['code'] as String);
       }
       return response['result'];
     } finally {
@@ -453,8 +475,19 @@ class PluginGateway {
           _proposals[proposal.id] = proposal;
           value = {'proposal': proposal.id, 'status': 'awaitingConfirmation'};
         case 'http.get':
+        case 'http.post':
           _access(invocation, 'http.request');
-          if (params.keys.any((k) => !{'url', 'credential'}.contains(k))) {
+          final post = method == 'http.post';
+          if (params.keys.any(
+            (k) =>
+                !(post ? {'url', 'credential', 'body'} : {'url', 'credential'})
+                    .contains(k),
+          )) {
+            throw const PluginDenied('invalid_request');
+          }
+          if (post &&
+              (params['body'] is! String ||
+                  utf8.encode(params['body'] as String).length > 8192)) {
             throw const PluginDenied('invalid_request');
           }
           final uri = Uri.parse(params['url'] as String);
@@ -464,7 +497,14 @@ class PluginGateway {
               !invocation.plugin.origins.contains(uri.origin)) {
             throw const PluginDenied();
           }
-          if (params['credential'] == true) {
+          if (params.containsKey('credential') &&
+              params['credential'] != true &&
+              params['credential'] != false &&
+              params['credential'] != 'apiKey') {
+            throw const PluginDenied('invalid_request');
+          }
+          if (params['credential'] == true ||
+              params['credential'] == 'apiKey') {
             _access(invocation, 'credentials.use');
           }
           value = await backend.command('effect', {

@@ -153,6 +153,8 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(find.text('Publisher fingerprint'), findsNothing);
+      await tester.tap(find.text('Manage'));
+      await tester.pumpAndSettle();
       await tester.scrollUntilVisible(
         find.text('Package details'),
         150,

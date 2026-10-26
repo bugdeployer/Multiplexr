@@ -41,8 +41,9 @@ export function validateManifest(m) {
   requireValue(Array.isArray(m.contributions) && m.contributions.length <= 64, 'Invalid contributions');
   const ids = new Set();
   for (const c of m.contributions) {
-    keys(c, ['id', 'family', 'title', 'description', 'icon', 'schemaVersion', 'scopes', 'fields', 'handler', 'package','events','engine','extensions']);
+    keys(c, ['id', 'family', 'title', 'description', 'icon', 'schemaVersion', 'scopes', 'fields', 'handler', 'package','events','engine','extensions','kinds']);
     requireValue(families.includes(c.family) && c.id === namespacedId(m.id, c.id?.split(':')[1]) && !ids.has(c.id) && text(c.title), 'Invalid contribution'); ids.add(c.id);
+    if (c.kinds !== undefined) requireValue(c.family === 'metadata.provider' && Array.isArray(c.kinds) && c.kinds.length > 0 && new Set(c.kinds).size === c.kinds.length && c.kinds.every(k => ['movie','television','video','musicTrack','musicAlbum','audiobook','ebook','comic'].includes(k)), 'Invalid provider kinds');
     if(c.events!==undefined) requireValue(c.family==='event.handler'&&Array.isArray(c.events)&&c.events.length>0&&c.events.length<=2&&new Set(c.events).size===c.events.length&&c.events.every(e=>['org.multiplexr:application.ready','org.multiplexr:library.changed'].includes(e)),'Invalid event subscription');
     if (c.family === 'settings.section') {
       requireValue(c.schemaVersion === 1 && text(c.description, 1000) && ['settings', 'book', 'music', 'video', 'palette', 'extension'].includes(c.icon), 'Invalid settings section');
@@ -67,14 +68,14 @@ export function validateManifest(m) {
       }
       c.fields.forEach(visit);
     } else if(c.family === 'media.descriptor') {
-      keys(c,['id','family','title','engine','extensions']);
+      keys(c,['id','family','title','engine','extensions','kinds']);
       const engines={"reader.epub": ["epub"], "reader.text": ["txt"], "reader.pdf": ["pdf"], "reader.comic": ["cbz", "cbr"], "player.audio": ["mp3", "m4a", "m4b", "aac", "flac", "ogg", "oga", "opus", "wav"], "player.video": ["mp4", "mkv", "mov", "webm", "m4v", "avi", "ts", "m2ts", "3gp"]};
       requireValue(engines[c.engine] && Array.isArray(c.extensions) && c.extensions.length>0 && c.extensions.length<=16 && new Set(c.extensions).size===c.extensions.length && c.extensions.every(e=>engines[c.engine].includes(e)), 'Unsupported engine or codec');
     } else if (c.family === 'theme') {
       keys(c, ['id', 'family', 'title', 'package']);
       requireValue(c.package === 'theme.json', 'Theme package must be a data-only descriptor');
     } else {
-      keys(c, ['id', 'family', 'title', 'handler', 'events']);
+      keys(c, ['id', 'family', 'title', 'handler', 'events', 'kinds']);
       requireValue(typeof c.handler === 'string' && /^[a-z][a-zA-Z0-9]*(\.[a-z][a-zA-Z0-9]*)+$/.test(c.handler), 'Handler required');
     }
   }

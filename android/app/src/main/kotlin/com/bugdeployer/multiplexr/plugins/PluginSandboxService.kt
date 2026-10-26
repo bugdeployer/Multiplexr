@@ -6,7 +6,7 @@ import android.os.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-/** Disabled outside the debug proof. Each invocation gets a fresh JS runtime. */
+/** Each invocation gets a fresh isolated JS runtime. */
 class PluginSandboxService : Service() {
     private val worker = Executors.newSingleThreadExecutor()
     private val watchdog = Executors.newSingleThreadScheduledExecutor()
@@ -41,10 +41,10 @@ class PluginSandboxService : Service() {
                         responses[call] = future
                         try {
                             reply.send(Message.obtain(null, HOST_CALL).apply { data = Bundle().apply { putLong("id", id); putLong("call", call); putString("request", request) }; replyTo = messenger })
-                            future.get(1500, TimeUnit.MILLISECONDS)
+                            future.get(11, TimeUnit.SECONDS)
                         } finally { responses.remove(call) }
                     }
-                    val kill = watchdog.schedule({ Process.killProcess(Process.myPid()) }, 2, TimeUnit.SECONDS)
+                    val kill = watchdog.schedule({ Process.killProcess(Process.myPid()) }, 15, TimeUnit.SECONDS)
                     worker.execute {
                         val bytes = try { QuickJs.execute(source, input, id) } catch (_: Throwable) { null }
                         kill.cancel(false)

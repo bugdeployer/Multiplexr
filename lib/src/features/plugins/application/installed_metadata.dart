@@ -33,7 +33,12 @@ class InstalledMetadataProvider
   String get version => contribution.plugin.version;
   @override
   Set<MetadataEntityType> get entities => Set.unmodifiable(
-    MetadataEntityType.values.where((v) => v != MetadataEntityType.image),
+    MetadataEntityType.values.where(
+      (v) =>
+          v != MetadataEntityType.image &&
+          ((contribution.definition['kinds'] as List?)?.contains(v.name) ??
+              true),
+    ),
   );
   @override
   Future<MetadataSearchPage> search(MetadataSearchRequest request) async {
@@ -62,15 +67,45 @@ class InstalledMetadataProvider
     if (selectedScopes.single.collection.isEmpty) {
       throw const PluginDenied();
     }
-    final page = Map<String, dynamic>.from(
-      await invoke(id, {
-        'query': request.title,
-        'kind': request.entity.name,
-        if (request.creator.isNotEmpty) 'creator': request.creator,
-        if (request.locale.isNotEmpty) 'language': request.locale,
-        if (request.cursor != null) 'cursor': request.cursor,
-      }, selectedScopes) as Map,
-    );
+    late final Map<String, dynamic> page;
+    try {
+      page = Map<String, dynamic>.from(
+        await invoke(id, {
+          'query': request.title,
+          'kind': request.entity.name,
+          if (request.creator.isNotEmpty) 'creator': request.creator,
+          if (request.locale.isNotEmpty) 'language': request.locale,
+          if (request.cursor != null) 'cursor': request.cursor,
+        }, selectedScopes) as Map,
+      );
+    } on PluginDenied catch (error) {
+      throw switch (error.code) {
+        'permission_denied' => const MetadataFailure(
+          MetadataFailureKind.authentication,
+          'Check the provider credential and collection access in Plugins & themes.',
+        ),
+        'resource_limit' => const MetadataFailure(
+          MetadataFailureKind.rateLimit,
+          'The provider is rate limiting requests. Try again later.',
+        ),
+        'deadline_exceeded' => const MetadataFailure(
+          MetadataFailureKind.network,
+          'The provider took too long. Try again.',
+        ),
+        'invalid_response' => const MetadataFailure(
+          MetadataFailureKind.invalidResponse,
+          'The provider returned an invalid response. Check for a plugin update.',
+        ),
+        'unsupported_capability' => const MetadataFailure(
+          MetadataFailureKind.unavailable,
+          'This provider does not support the requested media type.',
+        ),
+        _ => const MetadataFailure(
+          MetadataFailureKind.network,
+          'The provider could not complete the search. Check your connection and plugin setup.',
+        ),
+      };
+    }
     final next = page['nextCursor'] as String?;
     return MetadataSearchPage(
       request: request,

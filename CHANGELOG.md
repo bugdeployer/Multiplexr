@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1
+
+- Enable the isolated plugin runtime in normal builds.
+- Fix GitHub package downloads, network deadlines and provider error reporting.
+- Add SDK JSON requests, POST, host-managed API-key headers and media-kind declarations.
+- Add searchable Installed and Browse views with provider setup guidance.
+
 ## 0.5.0
 
 - Local collections for video, music, audiobooks, ebooks and comics.

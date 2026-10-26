@@ -51,3 +51,7 @@ Tests can import `multiplexr_plugin_sdk/testing`. Never execute untrusted packag
 Run `npm pack` in the SDK directory and install the resulting archive in your author project. Import `multiplexr_plugin_sdk/app-shell` for the app-neutral API. Implement and test your own host runtime, permission gateway, contribution renderer and persistence. Installing the author SDK does not add those services to an app.
 
 Themes are separate data-only packages. See [theme authoring](themes.md).
+
+## Provider HTTP
+
+SDK 1.2 adds `httpJson`, JSON POST and host-managed `X-API-Key` credentials. These require Multiplexr 0.5.1 or newer. Declare `metadata.provide`, `http.request`, and `credentials.use` when needed. A metadata contribution should declare its supported `kinds` (for example `["movie", "television"]`). Collection access remains a separate user grant. Network packages are reviewed before enabling; GitHub package downloads may follow the GitHub release-asset redirect, without granting plugins access to that host.

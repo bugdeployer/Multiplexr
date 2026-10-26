@@ -42,7 +42,7 @@ internal class PluginRuntimeClient(private val context: Context) {
         context.packageManager.setComponentEnabledSetting(ComponentName(context, PluginSandboxService::class.java), android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED, android.content.pm.PackageManager.DONT_KILL_APP)
         connection = conn
         if(!context.bindService(Intent(context, PluginSandboxService::class.java), conn, Context.BIND_AUTO_CREATE)) complete(null, "runtime_unavailable")
-        main.postDelayed({ if(connection === conn) complete(null, "deadline_exceeded") }, 2500)
+        main.postDelayed({ if(connection === conn) complete(null, "deadline_exceeded") }, 16000)
     }
     fun cancel() { complete(null, "cancelled") }
     private fun complete(value: String?, error: String?) {

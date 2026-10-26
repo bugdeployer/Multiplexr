@@ -1,7 +1,7 @@
 name: multiplexr
 description: Local media library, players and readers for Android.
 publish_to: none
-version: 0.5.0+27
+version: 0.5.1+28
 
 environment:
   sdk: ^3.13.5

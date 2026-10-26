@@ -11,11 +11,11 @@ ROOT = Path(__file__).resolve().parent.parent
 ANDROID = '{http://schemas.android.com/apk/res/android}'
 
 class PluginRuntimeBoundaryTest(unittest.TestCase):
-    def test_release_service_is_disabled_nonexported_and_os_isolated(self):
+    def test_release_service_is_enabled_nonexported_and_os_isolated(self):
         manifest = ET.parse(ROOT / 'android/app/src/main/AndroidManifest.xml')
         service = next(s for s in manifest.findall('.//service')
                        if s.get(ANDROID + 'name') == '.plugins.PluginSandboxService')
-        self.assertEqual(service.get(ANDROID + 'enabled'), 'false')
+        self.assertEqual(service.get(ANDROID + 'enabled'), 'true')
         self.assertEqual(service.get(ANDROID + 'exported'), 'false')
         self.assertEqual(service.get(ANDROID + 'isolatedProcess'), 'true')
         for file in (ROOT / 'lib').rglob('*.dart'):

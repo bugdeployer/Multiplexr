@@ -60,7 +60,11 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(find.text('Tool'), findsOneWidget);
+      await tester.tap(find.text('Manage'));
+      await tester.pumpAndSettle();
       expect(find.text('Permissions'), findsOneWidget);
+      await tester.ensureVisible(find.text('Remove'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Remove'));
       await tester.pumpAndSettle();
       expect(find.text('Remove plugin?'), findsOneWidget);
@@ -90,6 +94,8 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.textContaining('No plugins installed'), findsOneWidget);
+    await tester.tap(find.byTooltip('Extension options'));
+    await tester.pumpAndSettle();
     expect(find.text('Install file'), findsOneWidget);
     expect(find.byTooltip('Disable all plugins'), findsOneWidget);
     await tester.pumpWidget(const SizedBox());

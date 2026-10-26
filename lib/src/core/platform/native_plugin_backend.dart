@@ -14,6 +14,15 @@ class NativePluginBackend implements PluginBackend {
   ]) async {
     try {
       return await channel.invokeMethod<Object?>(method, arguments);
+    } on PlatformException catch (error) {
+      if ({
+        'permission_denied',
+        'deadline_exceeded',
+        'runtime_failure',
+      }.contains(error.code)) {
+        throw PluginDenied(error.code);
+      }
+      rethrow;
     } on MissingPluginException {
       if (method == 'cancel' || method == 'disableAll') return null;
       if (method == 'list') return <Object?>[];

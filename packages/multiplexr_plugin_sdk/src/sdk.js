@@ -16,6 +16,20 @@ export class PluginError extends Error {
     this.code = errorCodes.includes(code) ? code : 'plugin_error';
   }
 }
+/** Fetch JSON through the host; credentials remain outside the script. */
+export function httpJson(host, url, credential = false, body) {
+  const response = body === undefined
+    ? host.call('http.get', { url, credential })
+    : host.call('http.post', { url, credential, body: JSON.stringify(body) });
+  if (response.status === 401 || response.status === 403) throw new PluginError('permission_denied');
+  if (response.status === 429) throw new PluginError('resource_limit');
+  if (response.status < 200 || response.status >= 300) throw new PluginError('runtime_failure');
+  try {
+    const value = JSON.parse(response.body);
+    validateJson(value);
+    return value;
+  } catch (_) { throw new PluginError('invalid_response'); }
+}
 export function requireValue(condition, message) {
   if (!condition) throw new PluginError('invalid_request', message);
 }

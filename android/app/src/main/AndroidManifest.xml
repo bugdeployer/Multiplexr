@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <service android:name=".plugins.PluginSandboxService" android:exported="false"
-            android:enabled="false" android:isolatedProcess="true" android:process=":plugin_sandbox" />
+            android:enabled="true" android:isolatedProcess="true" android:process=":plugin_sandbox" />
         <service android:name=".PlaybackService" android:exported="false" android:stopWithTask="false"
             android:foregroundServiceType="mediaPlayback">
             <intent-filter><action android:name="androidx.media3.session.MediaSessionService" /></intent-filter>

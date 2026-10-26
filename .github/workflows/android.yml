@@ -47,4 +47,4 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: flutter test test/collection_experience_test.dart --tags=golden
+      - run: flutter test test/collection_experience_test.dart test/plugin_manager_layout_test.dart --tags=golden

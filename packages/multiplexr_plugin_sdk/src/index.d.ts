@@ -21,7 +21,8 @@ export type SettingField = { id: NamespacedId; label: string; accessibleLabel: s
   { type: 'multiSelect'; choices: string[]; default: string[] } | { type: 'credential' });
 export interface Condition { field: NamespacedId; equals: string | number | boolean; }
 export type Contribution = { id: NamespacedId; title: string } & (
-  { family: Exclude<ContributionFamily, 'settings.section' | 'theme' | 'event.handler' | 'media.descriptor'>; handler: string } |
+  { family: Exclude<ContributionFamily, 'settings.section' | 'theme' | 'event.handler' | 'media.descriptor' | 'metadata.provider'>; handler: string } |
+  { family: 'metadata.provider'; handler: string; kinds?: ('movie'|'television'|'video'|'musicTrack'|'musicAlbum'|'audiobook'|'ebook'|'comic')[] } |
   { family: 'event.handler'; handler: string; events?: ('org.multiplexr:application.ready' | 'org.multiplexr:library.changed')[] } |
   { family: 'media.descriptor'; engine:'reader.epub'|'reader.text'|'reader.pdf'|'reader.comic'|'player.audio'|'player.video'; extensions:string[] } |
   { family: 'theme'; package: 'theme.json' } |
@@ -31,7 +32,8 @@ export interface EffectiveSetting<T extends Json = Json> { value: T; source: Sco
 export interface HostMethods {
   'catalog.fields': {params:{handle:string};result:Record<NamespacedId,Json>};
   'catalog.propose': {params:{handle:string;revision:string;idempotencyKey:string} & ({operation:'mergeFields';fields:Record<NamespacedId,Json>} | {operation:'replaceTags';tags:string[]});result:{proposal:string;status:'awaitingConfirmation'}};
-  'http.get': {params:{url:string;credential?:boolean};result:{status:number;body:string}};
+  'http.get': {params:{url:string;credential?:boolean|'apiKey'};result:{status:number;body:string}};
+  'http.post': {params:{url:string;credential?:boolean|'apiKey';body:string};result:{status:number;body:string}};
   'storage.read': {params:{schema:number;key:string};result:string|null};
   'storage.write': {params:{schema:number;key:string;value:string|null};result:null};
   'imports.read': {params:{handle:string};result:{text:string;mime:string}};
@@ -45,6 +47,7 @@ export interface HostMethods {
   'catalog.titles': { params: { handle?: string; collection?: string; limit?: number; cursor?: string | null }; result: Page<Title> };
 }
 export interface Host { call<M extends keyof HostMethods>(method: M, params: HostMethods[M]['params'], cancellation?: Cancellation): HostMethods[M]['result']; }
+export function httpJson(host: Host, url: string, credential?: boolean | 'apiKey', body?: Json): Json;
 export interface Request { v: 1; id: string; method: string; params: Json; }
 export type Response = { v: 1; id: string; result: Json } | { v: 1; id: string | null; error: { code: ErrorCode } };
 export class Cancellation { readonly cancelled: boolean; cancel(): void; check(): void; }

@@ -28,11 +28,12 @@ internal class PluginCredentials(private val root: File) {
         val cipher = Cipher.getInstance("AES/GCM/NoPadding").apply { init(Cipher.ENCRYPT_MODE, key()); updateAAD((id + origin).toByteArray(Charsets.UTF_8)) }
         val encrypted = cipher.doFinal(secret.toByteArray(Charsets.UTF_8)); PluginStore.atomic(target, cipher.iv + encrypted)
     }
-    @Synchronized fun header(id: String, origin: String): Pair<String,String>? {
+    @Synchronized fun header(id: String, origin: String, apiKey: Boolean = false): Pair<String,String>? {
         val f = file(id, origin); if(!f.exists()) return null
         val bytes = f.readBytes(); require(bytes.size in 29..8192)
         val cipher = Cipher.getInstance("AES/GCM/NoPadding").apply { init(Cipher.DECRYPT_MODE, key(), GCMParameterSpec(128, bytes.copyOfRange(0,12))); updateAAD((id + origin).toByteArray(Charsets.UTF_8)) }
-        return "Authorization" to "Bearer " + String(cipher.doFinal(bytes.copyOfRange(12, bytes.size)), Charsets.UTF_8)
+        val secret = String(cipher.doFinal(bytes.copyOfRange(12, bytes.size)), Charsets.UTF_8)
+        return if (apiKey) "X-API-Key" to secret else "Authorization" to "Bearer $secret"
     }
     @Synchronized fun remove(id: String, origins: Set<String>) { origins.forEach { file(id,it).delete() } }
 }

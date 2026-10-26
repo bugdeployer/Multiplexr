@@ -16,6 +16,7 @@ if (releaseRequested && !signingFile.exists()) {
 }
 
 android {
+    buildFeatures { buildConfig = true }
     namespace = "com.bugdeployer.multiplexr"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
@@ -32,7 +33,6 @@ android {
         // Keep the Android build number monotonic across public releases.
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        manifestPlaceholders["pluginSandboxEnabled"] = "false"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild { cmake { arguments += "-DANDROID_STL=none" } }
     }
@@ -48,9 +48,6 @@ android {
         }
     }
     buildTypes {
-        debug {
-            manifestPlaceholders["pluginSandboxEnabled"] = providers.gradleProperty("pluginSandboxProof").orNull == "true"
-        }
         release {
             if (signingFile.exists()) signingConfig = signingConfigs.getByName("release")
         }
