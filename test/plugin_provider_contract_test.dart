@@ -5,6 +5,11 @@ import 'package:multiplexr/src/experience/plugins/plugin_manager.dart';
 import 'package:multiplexr/src/features/plugins/application/installed_metadata.dart';
 import 'package:multiplexr/src/features/plugins/application/contribution_registry.dart';
 import 'package:multiplexr/src/features/metadata/application/metadata_contracts.dart';
+import 'package:multiplexr/src/bootstrap/app_composition.dart';
+import 'package:multiplexr/src/features/catalog/application/extension_catalog.dart';
+
+import 'reading_r5_test.dart' show ReadingWorkflowHarness;
+import 'widget_test.dart' show TestDevice;
 
 import 'rx_plugin_gateway_test.dart' show Harness, Backend, record;
 
@@ -23,6 +28,24 @@ class ErrorBackend extends Backend {
 }
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  test(
+    'application plugin scopes include typed ebook and comic collections',
+    () async {
+      final fixture = ReadingWorkflowHarness();
+      final app = AppComposition(
+        platform: TestDevice(),
+        libraryService: fixture.service,
+      );
+      await app.settings.load();
+      final scopes = await app.plugins.scopes();
+      expect(
+        scopes.map((scope) => scope.kind),
+        containsAll([ExtensionMedia.ebook, ExtensionMedia.comic]),
+      );
+      app.dispose();
+    },
+  );
   test('gateway preserves only validated plugin errors', () async {
     final h = Harness(), backend = ErrorBackend();
     final gateway = PluginGateway(

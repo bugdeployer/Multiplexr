@@ -38,7 +38,11 @@ class _PluginManagerPageState extends State<PluginManagerPage> {
   Future<void> action(Future<void> Function() operation) async {
     try {
       await operation();
-    } catch (_) {
+    } catch (error, stack) {
+      debugPrintStack(
+        label: 'Plugin action failed (${error.runtimeType})',
+        stackTrace: stack,
+      );
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Plugin operation could not complete.')),

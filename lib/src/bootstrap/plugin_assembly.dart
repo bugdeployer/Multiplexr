@@ -110,7 +110,9 @@ PluginManager createPluginManager({
                     ? [ExtensionMedia.television]
                     : [ExtensionMedia.movie, ExtensionMedia.television]))
               PluginScope(c.id, kind, '${c.name} · ${kind.name}'),
-        for (final c in reading.bundle?.catalog.collections ?? [])
+        for (final c
+            in reading.bundle?.catalog.collections ??
+                const <CatalogCollection>[])
           if (reading.canAccess(c.id))
             PluginScope(
               c.id,
@@ -128,7 +130,8 @@ PluginManager createPluginManager({
     library.service.maintenance.generation,
     for (final c in library.collections)
       [c.id, library.canAccessCollection(c.id)],
-    for (final c in reading.bundle?.catalog.collections ?? [])
+    for (final c
+        in reading.bundle?.catalog.collections ?? const <CatalogCollection>[])
       [c.id, reading.canAccess(c.id)],
   ]);
   Map<String, String> catalogState() => {
@@ -138,7 +141,8 @@ PluginManager createPluginManager({
           c.name,
           for (final item in library.indexedItems(c.id)) item.toJson(),
         ]),
-    for (final c in reading.bundle?.catalog.collections ?? [])
+    for (final c
+        in reading.bundle?.catalog.collections ?? const <CatalogCollection>[])
       if (reading.canAccess(c.id))
         c.id: jsonEncode([
           c.name,
