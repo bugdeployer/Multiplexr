@@ -38,7 +38,7 @@ See [development](docs/development.md) for Windows screenshot checks, native tes
 
 ## SDKs
 
-The repository includes both reusable packages:
+Both reusable packages are included as source and build from this checkout. No access to a separate private repository is required.
 
 - [Plugin SDK](packages/multiplexr_plugin_sdk): JavaScript helpers, TypeScript contracts, manifest validation, bundling and signing. [Author guide](docs/plugins.md).
 - [AppShell](packages/app_shell): shared Flutter components and a data-only theme compiler. [Theme guide](docs/themes.md).
