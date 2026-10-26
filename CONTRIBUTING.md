@@ -11,7 +11,7 @@ Include your Android version, device, app version, steps to reproduce and expect
 1. Fork the repository and branch from `main`.
 2. Use a short descriptive branch name, such as `fix/reader-resume` or `docs/theme-assets`.
 3. Keep the change focused. Explain the problem, the resulting behavior and how you checked it in the pull request.
-4. Run the checks relevant to the code you changed. Add regression coverage when it catches a real failure; avoid tests that only repeat the implementation.
+4. Run the relevant checks and add regression coverage for bug fixes.
 
 Use the Dart formatter for Dart code. Keep comments about constraints, tradeoffs or non-obvious behavior. Prefer descriptive names and small interfaces over broad utility modules. Don't reformat unrelated files or add dependencies without explaining why.
 

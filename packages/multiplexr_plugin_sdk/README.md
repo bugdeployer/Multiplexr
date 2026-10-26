@@ -14,4 +14,4 @@ Install the tarball in another author project, or use the CLI directly from this
 
 Read the [author guide](https://github.com/bugdeployer/Multiplexr/blob/main/docs/plugins.md) and [API reference](API.md). Start with `examples/notes-tool` for a controlled UI contribution, or `examples/platform-demo` for other families. The fake host is for tests, not containment of untrusted plugins.
 
-The package is distributed through repository releases; npm registry publication is not configured. SDK version 1.1.0 and protocol 1 are independent of the app's 0.5.0 release. Project code is GPL-3.0-only.
+SDK 1.1.0 uses protocol 1. Download the package from [Releases](https://github.com/bugdeployer/Multiplexr/releases). Licensed under GPL-3.0-only.

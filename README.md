@@ -15,13 +15,11 @@ A local media library for Android. Organize movies, TV, videos, music, audiobook
 - Library backup and restore, collection locks and local/global browsing spaces.
 - Importable themes and plugins with reviewed permissions.
 
-No media, online metadata provider or shared provider key is included. Local files and manual metadata editing work without plugins. Folder access uses Android's system picker. Collection locks control access in the app; they do not encrypt files.
+Add your own media through Android's folder picker. Plugins can provide metadata lookup.
 
 ## Status
 
-0.5.0 is the first release from this public repository. The app is still being tested with larger libraries and different Android devices. Back up your library before installing a new version. Plugin interfaces are versioned separately from the app.
-
-Android is the supported target. The application ID is `com.bugdeployer.multiplexr`; older preview installations used a different ID and will not be updated in place. Export a library backup from the old installation and reconnect folders after restoring it.
+Version **0.5.0**. Requires **Android 7.0 or newer**.
 
 ## Development
 
@@ -43,7 +41,7 @@ The repository includes both reusable packages:
 - [Plugin SDK](packages/multiplexr_plugin_sdk): JavaScript helpers, TypeScript contracts, manifest validation, bundling and signing. [Author guide](docs/plugins.md).
 - [AppShell](packages/app_shell): shared Flutter components and a data-only theme compiler. [Theme guide](docs/themes.md).
 
-SDK archives are attached to the release. The plugin SDK has no runtime npm dependencies. A different host app must implement its own sandbox, permissions, persistence and host services.
+SDK archives are available from [Releases](https://github.com/bugdeployer/Multiplexr/releases).
 
 ## License
 

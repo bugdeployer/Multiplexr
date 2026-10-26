@@ -16,9 +16,9 @@
 | `tool/` | Architecture checks and fixture tooling |
 | `docs/` | Public build and authoring guides |
 
-Application code depends on ports; native adapters implement them. Bootstrap connects the two. Presenters expose the state needed by screens. Existing adapter files remain in their current modules where moving them would add churn without changing ownership.
+Application code depends on ports; native adapters implement them. Bootstrap connects the two. Presenters expose the state needed by screens.
 
-The architecture checker tracks import direction and known presenter ownership. It is a guard against dependency drift, not proof that every abstraction is ideal. New application/domain code should remain testable without Flutter.
+The architecture checker enforces import direction and presenter ownership. Application/domain code should remain testable without Flutter.
 
 AppShell does not depend on media models or collection routes. Its platform interface is implemented by the host. The JavaScript SDK is also independent of Flutter and Android; its fake host is a testing utility, not an untrusted-code sandbox.
 

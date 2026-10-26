@@ -20,7 +20,7 @@ python tool/check_architecture.py --strict-architecture
 flutter build apk --debug
 ```
 
-Screenshot baselines are rendered on Windows. CI runs the eight tagged `golden` checks on Windows and the remaining suite on Linux. Use `flutter test --exclude-tags=golden` on Linux, or run `flutter test test/collection_experience_test.dart --tags=golden` on Windows for the image comparisons. Do not update baselines to hide platform rendering differences.
+Screenshot baselines use Windows rendering. Run `flutter test test/collection_experience_test.dart --tags=golden` on Windows; CI runs the remaining suite on Linux.
 
 For native unit tests:
 
@@ -60,4 +60,4 @@ The app's release version is in `pubspec.yaml`. Keep the Android build number in
 
 ## Device checks
 
-Automated tests don't cover every OEM's background playback, Bluetooth, storage access, PiP, biometrics or process recovery behavior. Check those flows on the devices affected by a change. Record results in the pull request rather than adding private test logs or internal planning documents to the source tree.
+Automated tests don't cover every OEM's background playback, Bluetooth, storage access, PiP, biometrics or process recovery behavior. Check those flows on the devices affected by a change. Include device test results in the pull request.
