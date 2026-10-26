@@ -14,15 +14,15 @@ Run `flutter doctor` before building. `pubspec.lock` and the SDK's `package-lock
 ```sh
 flutter pub get
 flutter analyze
-flutter test
+flutter test --exclude-tags=golden
 python -m unittest discover -s tool -p 'test_*.py'
 python tool/check_architecture.py --strict-architecture
 flutter build apk --debug
 ```
 
-For native unit tests:
-
 Screenshot baselines are rendered on Windows. CI runs the eight tagged `golden` checks on Windows and the remaining suite on Linux. Use `flutter test --exclude-tags=golden` on Linux, or run `flutter test test/collection_experience_test.dart --tags=golden` on Windows for the image comparisons. Do not update baselines to hide platform rendering differences.
+
+For native unit tests:
 
 ```sh
 cd android

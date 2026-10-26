@@ -30,11 +30,11 @@ The UI and application code use Flutter/Dart. Android adapters use Kotlin, Media
 ```sh
 flutter pub get
 flutter analyze
-flutter test
+flutter test --exclude-tags=golden
 flutter build apk --debug
 ```
 
-See [development](docs/development.md) for native tests and release signing, and [architecture](docs/architecture.md) for module boundaries.
+See [development](docs/development.md) for Windows screenshot checks, native tests and release signing, and [architecture](docs/architecture.md) for module boundaries.
 
 ## SDKs
 
