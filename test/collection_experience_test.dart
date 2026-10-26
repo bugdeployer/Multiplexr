@@ -188,6 +188,7 @@ void main() {
             query.dispose();
             settings.dispose();
           },
+          tags: 'golden',
         );
       }
     }

@@ -7,5 +7,6 @@ GPL-3.0-only applies to project code. It does not replace the licenses of bundle
 - Pixelarticons retains its MIT notice: `packages/app_shell/assets/licenses/Pixelarticons-LICENSE.txt`.
 - Flutter/Dart packages retain their package licenses. Flutter includes dependency notices in the built app.
 - AndroidX/Media3 and other Maven dependencies retain their declared notices, including Apache-2.0 dependencies.
+- The Gradle wrapper is distributed under Apache-2.0; its license is at `android/gradle/wrapper/LICENSE`.
 
 Keep these files when redistributing source or assets. Review transitive licenses before changing dependencies. Provider plugins and their services have separate terms; no online provider implementation or shared API credential ships with this app.

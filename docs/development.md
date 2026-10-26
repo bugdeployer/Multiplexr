@@ -22,6 +22,8 @@ flutter build apk --debug
 
 For native unit tests:
 
+Screenshot baselines are rendered on Windows. CI runs the eight tagged `golden` checks on Windows and the remaining suite on Linux. Use `flutter test --exclude-tags=golden` on Linux, or run `flutter test test/collection_experience_test.dart --tags=golden` on Windows for the image comparisons. Do not update baselines to hide platform rendering differences.
+
 ```sh
 cd android
 ./gradlew :app:testDebugUnitTest

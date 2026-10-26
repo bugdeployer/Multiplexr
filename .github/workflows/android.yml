@@ -35,6 +35,16 @@ jobs:
       - run: flutter pub get && flutter analyze
         working-directory: packages/app_shell/example
       - run: flutter analyze
-      - run: flutter test
+      - run: flutter test --exclude-tags=golden
       - run: flutter build apk --debug
       - run: bash android/gradlew -p android :app:testDebugUnitTest
+  golden:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter test test/collection_experience_test.dart --tags=golden
