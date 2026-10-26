@@ -1,0 +1,138 @@
+{
+  "darkBases": [
+    {
+      "name": "Midnight",
+      "color": "#050505"
+    },
+    {
+      "name": "Coal",
+      "color": "#111114"
+    },
+    {
+      "name": "Abyss",
+      "color": "#090E14"
+    },
+    {
+      "name": "Void Rose",
+      "color": "#190A10"
+    },
+    {
+      "name": "Slate",
+      "color": "#171B20"
+    },
+    {
+      "name": "Viridian",
+      "color": "#0B2118"
+    },
+    {
+      "name": "Amethyst",
+      "color": "#28094A"
+    },
+    {
+      "name": "Mariana",
+      "color": "#0A172A"
+    }
+  ],
+  "lightBases": [
+    {
+      "name": "Bone",
+      "color": "#F0ECE2"
+    },
+    {
+      "name": "Off-white",
+      "color": "#F7F7F2"
+    },
+    {
+      "name": "Ivory",
+      "color": "#F8F4E9"
+    },
+    {
+      "name": "Porcelain",
+      "color": "#F2F3F5"
+    },
+    {
+      "name": "Sand",
+      "color": "#E7DECC"
+    },
+    {
+      "name": "Mist",
+      "color": "#EAF0F3"
+    },
+    {
+      "name": "Sage",
+      "color": "#EAF0E5"
+    },
+    {
+      "name": "Blush",
+      "color": "#F5E9EC"
+    }
+  ],
+  "darkAccents": [
+    {
+      "name": "Rose",
+      "color": "#F568AE"
+    },
+    {
+      "name": "Violet",
+      "color": "#B59AFA"
+    },
+    {
+      "name": "Crimson",
+      "color": "#FF5275"
+    },
+    {
+      "name": "Emerald",
+      "color": "#38D98A"
+    },
+    {
+      "name": "Cyan",
+      "color": "#00D6E6"
+    },
+    {
+      "name": "Amber",
+      "color": "#FFCC36"
+    },
+    {
+      "name": "Cobalt",
+      "color": "#79AAFF"
+    },
+    {
+      "name": "Lime",
+      "color": "#BEF638"
+    }
+  ],
+  "lightAccents": [
+    {
+      "name": "Charcoal",
+      "color": "#30312F"
+    },
+    {
+      "name": "Ink",
+      "color": "#202D3A"
+    },
+    {
+      "name": "Graphite",
+      "color": "#51565B"
+    },
+    {
+      "name": "Espresso",
+      "color": "#493A32"
+    },
+    {
+      "name": "Navy",
+      "color": "#1E4071"
+    },
+    {
+      "name": "Burgundy",
+      "color": "#682A3A"
+    },
+    {
+      "name": "Forest",
+      "color": "#18513D"
+    },
+    {
+      "name": "Violet",
+      "color": "#5F3A94"
+    }
+  ]
+}

@@ -1,0 +1,1466 @@
+{
+  "base": {
+    "version": 1,
+    "collections": [
+      {
+        "id": "books:[]",
+        "name": "books:[]",
+        "subtype": "ebook",
+        "locked": false,
+        "includeInGlobal": true,
+        "roots": [
+          {
+            "uri": "content://local/books:%5B%5D",
+            "name": "Root"
+          }
+        ]
+      },
+      {
+        "id": "comics",
+        "name": "comics",
+        "subtype": "comics",
+        "locked": false,
+        "includeInGlobal": true,
+        "roots": [
+          {
+            "uri": "content://local/comics",
+            "name": "Root"
+          }
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "collectionId": "books:[]",
+        "id": "saga",
+        "subtype": "ebook",
+        "metadata": {
+          "title": "Saga",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        }
+      },
+      {
+        "collectionId": "comics",
+        "id": "series",
+        "subtype": "comics",
+        "metadata": {
+          "title": "Series",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        }
+      }
+    ],
+    "titles": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "subtype": "ebook",
+        "role": "publication",
+        "format": "epub",
+        "metadata": {
+          "title": "standalone",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/standalone",
+          "uri": "content://local/books:%5B%5D/standalone",
+          "name": "standalone",
+          "rootUri": "content://local/books:%5B%5D",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "OPS/chapter2.xhtml",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "collectionId": "books:[]",
+        "id": "volume",
+        "subtype": "ebook",
+        "role": "publication",
+        "format": "epub",
+        "metadata": {
+          "title": "volume",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/volume",
+          "uri": "content://local/books:%5B%5D/volume",
+          "name": "volume",
+          "rootUri": "content://local/books:%5B%5D",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "OPS/chapter2.xhtml",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "subtype": "comics",
+        "role": "publication",
+        "format": "cbz",
+        "metadata": {
+          "title": "issue",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/issue",
+          "uri": "content://local/comics/issue",
+          "name": "issue",
+          "rootUri": "content://local/comics",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "001.png",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "002.png",
+            "label": "Second"
+          }
+        ]
+      }
+    ],
+    "memberships": [
+      {
+        "collectionId": "books:[]",
+        "parentId": "saga",
+        "titleId": "volume",
+        "order": 0
+      },
+      {
+        "collectionId": "comics",
+        "parentId": "series",
+        "titleId": "issue",
+        "order": 0
+      }
+    ],
+    "progress": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "sourceId": "source/standalone",
+        "sourceRevision": "revision-1",
+        "finished": false,
+        "location": {
+          "version": 1,
+          "kind": "text",
+          "resourceId": "second",
+          "locatorType": "cssSelector",
+          "locator": "#paragraph-2",
+          "progression": 0.35,
+          "before": "before",
+          "highlight": "text",
+          "after": "after"
+        }
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "sourceId": "source/issue",
+        "sourceRevision": "revision-1",
+        "finished": false,
+        "location": {
+          "version": 1,
+          "kind": "page",
+          "pageId": "second",
+          "pageIndex": 1,
+          "offset": 0.6
+        }
+      }
+    ],
+    "settings": [
+      {
+        "scope": "app",
+        "subtype": "ebook",
+        "values": {
+          "fontSize": 18,
+          "palette": "sepia"
+        }
+      },
+      {
+        "scope": "collection",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "values": {
+          "fontSize": 20
+        }
+      },
+      {
+        "scope": "group",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "entityId": "saga",
+        "values": {
+          "fontSize": 22
+        }
+      },
+      {
+        "scope": "title",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "entityId": "volume",
+        "values": {
+          "fontSize": 24
+        }
+      },
+      {
+        "scope": "title",
+        "subtype": "comics",
+        "collectionId": "comics",
+        "entityId": "issue",
+        "values": {
+          "comicMode": "webtoon",
+          "direction": "rtl",
+          "fit": "width"
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "future catalog version",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "version"
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "floating catalog version",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "version"
+          ],
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "unknown field",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "credential"
+          ],
+          "value": "secret"
+        }
+      ]
+    },
+    {
+      "name": "legacy subtype",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "collections",
+            0,
+            "subtype"
+          ],
+          "value": "video"
+        }
+      ]
+    },
+    {
+      "name": "nonboolean access",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "collections",
+            0,
+            "locked"
+          ],
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "name": "network root",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "collections",
+            0,
+            "roots",
+            0,
+            "uri"
+          ],
+          "value": "https://example.com"
+        }
+      ]
+    },
+    {
+      "name": "duplicate collection",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "collections",
+            1
+          ],
+          "value": {
+            "id": "books:[]",
+            "name": "books:[]",
+            "subtype": "ebook",
+            "locked": false,
+            "includeInGlobal": true,
+            "roots": [
+              {
+                "uri": "content://local/books:%5B%5D",
+                "name": "Root"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "duplicate title",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            1
+          ],
+          "value": {
+            "collectionId": "books:[]",
+            "id": "standalone",
+            "subtype": "ebook",
+            "role": "publication",
+            "format": "epub",
+            "metadata": {
+              "title": "standalone",
+              "authors": [
+                "Author"
+              ],
+              "description": "",
+              "language": "en",
+              "identifier": ""
+            },
+            "source": {
+              "id": "source/standalone",
+              "uri": "content://local/books:%5B%5D/standalone",
+              "name": "standalone",
+              "rootUri": "content://local/books:%5B%5D",
+              "revision": "revision-1",
+              "available": true
+            },
+            "readingOrder": [
+              {
+                "id": "first",
+                "href": "OPS/chapter1.xhtml",
+                "label": "First"
+              },
+              {
+                "id": "second",
+                "href": "OPS/chapter2.xhtml",
+                "label": "Second"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "duplicate group",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "groups",
+            1
+          ],
+          "value": {
+            "collectionId": "books:[]",
+            "id": "saga",
+            "subtype": "ebook",
+            "metadata": {
+              "title": "Saga",
+              "authors": [
+                "Author"
+              ],
+              "description": "",
+              "language": "en",
+              "identifier": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "missing title owner",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "collectionId"
+          ],
+          "value": "absent"
+        }
+      ]
+    },
+    {
+      "name": "wrong title subtype",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "subtype"
+          ],
+          "value": "comics"
+        }
+      ]
+    },
+    {
+      "name": "wrong title format",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "format"
+          ],
+          "value": "cbz"
+        }
+      ]
+    },
+    {
+      "name": "unsupported MOBI",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "format"
+          ],
+          "value": "mobi"
+        }
+      ]
+    },
+    {
+      "name": "ebook issue role",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "role"
+          ],
+          "value": "issue"
+        }
+      ]
+    },
+    {
+      "name": "ebook comic metadata",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "metadata",
+            "comicStyle"
+          ],
+          "value": "manga"
+        }
+      ]
+    },
+    {
+      "name": "empty publication order",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder"
+          ],
+          "value": []
+        }
+      ]
+    },
+    {
+      "name": "duplicate resource",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            1
+          ],
+          "value": {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          }
+        }
+      ]
+    },
+    {
+      "name": "unsafe resource traversal",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ],
+          "value": "../escape"
+        }
+      ]
+    },
+    {
+      "name": "encoded traversal",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ],
+          "value": "OPS/%2e%2e/%2e%2e/escape"
+        }
+      ]
+    },
+    {
+      "name": "encoded separator traversal",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ],
+          "value": "OPS%2f..%2f..%2fescape"
+        }
+      ]
+    },
+    {
+      "name": "encoded resource backslash",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ],
+          "value": "OPS/%5cescape"
+        }
+      ]
+    },
+    {
+      "name": "absolute resource",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ],
+          "value": "https://example.com/page"
+        }
+      ]
+    },
+    {
+      "name": "resource space",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ],
+          "value": "OPS/page one"
+        }
+      ]
+    },
+    {
+      "name": "resource invalid percent",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ],
+          "value": "OPS/%xy"
+        }
+      ]
+    },
+    {
+      "name": "unknown source root",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "source",
+            "rootUri"
+          ],
+          "value": "content://local/missing"
+        }
+      ]
+    },
+    {
+      "name": "duplicate source",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            1,
+            "source",
+            "id"
+          ],
+          "value": "source/standalone"
+        }
+      ]
+    },
+    {
+      "name": "network source",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "source",
+            "uri"
+          ],
+          "value": "https://example.com/file"
+        }
+      ]
+    },
+    {
+      "name": "empty source revision",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "source",
+            "revision"
+          ],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "name": "unknown series",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "memberships",
+            0,
+            "parentId"
+          ],
+          "value": "missing"
+        }
+      ]
+    },
+    {
+      "name": "missing title membership",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "memberships",
+            0,
+            "titleId"
+          ],
+          "value": "missing"
+        }
+      ]
+    },
+    {
+      "name": "negative membership order",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "memberships",
+            0,
+            "order"
+          ],
+          "value": -1
+        }
+      ]
+    },
+    {
+      "name": "fractional membership order",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "memberships",
+            0,
+            "order"
+          ],
+          "value": 0.5
+        }
+      ]
+    },
+    {
+      "name": "comic requires series",
+      "valid": false,
+      "patches": [
+        {
+          "op": "remove",
+          "path": [
+            "memberships",
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "duplicate structural owner",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "memberships",
+            1
+          ],
+          "value": {
+            "collectionId": "books:[]",
+            "parentId": "saga",
+            "titleId": "volume",
+            "order": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "missing progress owner",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "id"
+          ],
+          "value": "missing"
+        }
+      ]
+    },
+    {
+      "name": "duplicate progress",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            1
+          ],
+          "value": {
+            "collectionId": "books:[]",
+            "id": "standalone",
+            "sourceId": "source/standalone",
+            "sourceRevision": "revision-1",
+            "finished": false,
+            "location": {
+              "version": 1,
+              "kind": "text",
+              "resourceId": "second",
+              "locatorType": "cssSelector",
+              "locator": "#paragraph-2",
+              "progression": 0.35,
+              "before": "before",
+              "highlight": "text",
+              "after": "after"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "fraction out of range",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location",
+            "progression"
+          ],
+          "value": 1.01
+        }
+      ]
+    },
+    {
+      "name": "negative page index",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            1,
+            "location",
+            "pageIndex"
+          ],
+          "value": -1
+        }
+      ]
+    },
+    {
+      "name": "wrong page identity",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            1,
+            "location",
+            "pageId"
+          ],
+          "value": "first"
+        }
+      ]
+    },
+    {
+      "name": "unknown resource",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location",
+            "resourceId"
+          ],
+          "value": "missing"
+        }
+      ]
+    },
+    {
+      "name": "future locator version",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location",
+            "version"
+          ],
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "mixed location fields",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location",
+            "pageId"
+          ],
+          "value": "first"
+        }
+      ]
+    },
+    {
+      "name": "audio position forbidden",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "positionMs"
+          ],
+          "value": 5
+        }
+      ]
+    },
+    {
+      "name": "bad text offset",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location"
+          ],
+          "value": {
+            "version": 1,
+            "kind": "text",
+            "resourceId": "second",
+            "locatorType": "textOffset",
+            "locator": "1.2",
+            "progression": 0.35,
+            "before": "before",
+            "highlight": "text",
+            "after": "after"
+          }
+        }
+      ]
+    },
+    {
+      "name": "bad EPUB CFI",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location"
+          ],
+          "value": {
+            "version": 1,
+            "kind": "text",
+            "resourceId": "second",
+            "locatorType": "epubCfi",
+            "locator": "broken",
+            "progression": 0.35,
+            "before": "before",
+            "highlight": "text",
+            "after": "after"
+          }
+        }
+      ]
+    },
+    {
+      "name": "unknown settings field",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "settings",
+            0,
+            "values",
+            "audioRate"
+          ],
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "wrong settings subtype",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "settings",
+            0,
+            "values",
+            "comicMode"
+          ],
+          "value": "webtoon"
+        }
+      ]
+    },
+    {
+      "name": "out of range font size",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "settings",
+            0,
+            "values",
+            "fontSize"
+          ],
+          "value": 99
+        }
+      ]
+    },
+    {
+      "name": "null is not inherit",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "settings",
+            0,
+            "values",
+            "fontSize"
+          ],
+          "value": null
+        }
+      ]
+    },
+    {
+      "name": "unknown settings owner",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "settings",
+            3,
+            "entityId"
+          ],
+          "value": "missing"
+        }
+      ]
+    },
+    {
+      "name": "app settings owner forbidden",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "settings",
+            0,
+            "collectionId"
+          ],
+          "value": "books:[]"
+        }
+      ]
+    },
+    {
+      "name": "duplicate settings layer",
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "settings",
+            1
+          ],
+          "value": {
+            "scope": "app",
+            "subtype": "ebook",
+            "values": {
+              "fontSize": 18,
+              "palette": "sepia"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "unavailable source retained",
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "titles",
+            0,
+            "source",
+            "available"
+          ],
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "stale progress preserved",
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "sourceRevision"
+          ],
+          "value": "older"
+        }
+      ]
+    },
+    {
+      "name": "stale resource retained for recovery",
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "sourceRevision"
+          ],
+          "value": "older"
+        },
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location",
+            "resourceId"
+          ],
+          "value": "old-chapter"
+        }
+      ]
+    },
+    {
+      "name": "explicit finished independent of position",
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "finished"
+          ],
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "reset settings by removing override",
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "settings",
+            3,
+            "values"
+          ],
+          "value": {}
+        }
+      ]
+    },
+    {
+      "name": "EPUB CFI locator",
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location"
+          ],
+          "value": {
+            "version": 1,
+            "kind": "text",
+            "resourceId": "second",
+            "locatorType": "epubCfi",
+            "locator": "epubcfi(/6/2!/4/2:0)",
+            "progression": 0.35,
+            "before": "before",
+            "highlight": "text",
+            "after": "after"
+          }
+        }
+      ]
+    },
+    {
+      "name": "text offset locator",
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "path": [
+            "progress",
+            0,
+            "location"
+          ],
+          "value": {
+            "version": 1,
+            "kind": "text",
+            "resourceId": "second",
+            "locatorType": "textOffset",
+            "locator": "1024",
+            "progression": 0.35,
+            "before": "before",
+            "highlight": "text",
+            "after": "after"
+          }
+        }
+      ]
+    },
+    {
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "value": "OPS/../escape",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ]
+        }
+      ],
+      "name": "normalized traversal"
+    },
+    {
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "value": "OPS/%2e%2e/escape",
+          "path": [
+            "titles",
+            0,
+            "readingOrder",
+            0,
+            "href"
+          ]
+        }
+      ],
+      "name": "normalized encoded traversal"
+    },
+    {
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "value": "txt",
+          "path": [
+            "titles",
+            0,
+            "format"
+          ]
+        }
+      ],
+      "name": "TXT input"
+    },
+    {
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "value": "images",
+          "path": [
+            "titles",
+            2,
+            "format"
+          ]
+        }
+      ],
+      "name": "image directory input"
+    },
+    {
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "value": 700,
+          "path": [
+            "settings",
+            0,
+            "values",
+            "fontWeight"
+          ]
+        }
+      ],
+      "name": "reader font weight"
+    },
+    {
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "value": 750,
+          "path": [
+            "settings",
+            0,
+            "values",
+            "fontWeight"
+          ]
+        }
+      ],
+      "name": "invalid font weight"
+    },
+    {
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "value": {
+            "readerForeground": 4278190080,
+            "readerBackground": 4294967295,
+            "palette": "custom"
+          },
+          "path": [
+            "settings",
+            0,
+            "values"
+          ]
+        }
+      ],
+      "name": "custom reading colors"
+    },
+    {
+      "valid": false,
+      "patches": [
+        {
+          "op": "set",
+          "value": 0,
+          "path": [
+            "settings",
+            0,
+            "values",
+            "readerForeground"
+          ]
+        }
+      ],
+      "name": "transparent reading colors"
+    },
+    {
+      "valid": true,
+      "patches": [
+        {
+          "op": "set",
+          "value": {
+            "alignment": "justify",
+            "paragraphSpacing": 12
+          },
+          "path": [
+            "settings",
+            0,
+            "values"
+          ]
+        }
+      ],
+      "name": "paragraph spacing and alignment"
+    }
+  ]
+}

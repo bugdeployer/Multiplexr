@@ -1,0 +1,699 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiplexr.app/schemas/v1/manifest-1.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)+$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "entry": {
+      "const": "plugin.js"
+    },
+    "protocol": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "min",
+        "max"
+      ],
+      "additionalProperties": false
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-z][a-zA-Z0-9]*)+$"
+          },
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-z][a-zA-Z0-9]*)+$"
+          },
+          "maxItems": 64,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "required",
+        "optional"
+      ],
+      "additionalProperties": false
+    },
+    "contributions": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 161,
+                "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)+:[a-z][a-zA-Z0-9_.-]{0,79}$"
+              },
+              "family": {
+                "enum": [
+                  "metadata.provider",
+                  "artwork.provider",
+                  "source.provider",
+                  "import.handler",
+                  "export.handler",
+                  "library.tool",
+                  "event.handler",
+                  "ui.action",
+                  "ui.section",
+                  "ui.destination",
+                  "session.hook"
+                ]
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "handler": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-z][a-zA-Z0-9]*)+$"
+              },
+              "events": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 2,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "org.multiplexr:application.ready",
+                    "org.multiplexr:library.changed"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "family",
+              "title",
+              "handler"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "required": [
+                    "events"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "family": {
+                      "const": "event.handler"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 161,
+                "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)+:[a-z][a-zA-Z0-9_.-]{0,79}$"
+              },
+              "family": {
+                "const": "settings.section"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "icon": {
+                "enum": [
+                  "settings",
+                  "book",
+                  "music",
+                  "video",
+                  "palette",
+                  "extension"
+                ]
+              },
+              "schemaVersion": {
+                "const": 1
+              },
+              "scopes": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "app",
+                    "collection",
+                    "group",
+                    "title"
+                  ]
+                },
+                "maxItems": 4,
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 161,
+                      "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)+:[a-z][a-zA-Z0-9_.-]{0,79}$"
+                    },
+                    "type": {
+                      "enum": [
+                        "boolean",
+                        "number",
+                        "text",
+                        "enum",
+                        "multiSelect",
+                        "credential"
+                      ]
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "accessibleLabel": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "description": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000
+                    },
+                    "default": {},
+                    "scopes": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "app",
+                          "collection",
+                          "group",
+                          "title"
+                        ]
+                      },
+                      "maxItems": 4,
+                      "minItems": 1,
+                      "uniqueItems": true
+                    },
+                    "min": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    },
+                    "maxLength": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 4096
+                    },
+                    "choices": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 100
+                      },
+                      "maxItems": 100,
+                      "minItems": 1,
+                      "uniqueItems": true
+                    },
+                    "visibleWhen": {
+                      "type": "object",
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 161,
+                          "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)+:[a-z][a-zA-Z0-9_.-]{0,79}$"
+                        },
+                        "equals": {
+                          "type": [
+                            "string",
+                            "number",
+                            "boolean"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "field",
+                        "equals"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "enabledWhen": {
+                      "type": "object",
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 161,
+                          "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)+:[a-z][a-zA-Z0-9_.-]{0,79}$"
+                        },
+                        "equals": {
+                          "type": [
+                            "string",
+                            "number",
+                            "boolean"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "field",
+                        "equals"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "type",
+                    "label",
+                    "accessibleLabel",
+                    "scopes"
+                  ],
+                  "additionalProperties": false,
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "boolean"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "default"
+                        ],
+                        "properties": {
+                          "default": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "number"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "min",
+                          "max",
+                          "default"
+                        ],
+                        "properties": {
+                          "default": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "text"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "maxLength",
+                          "default"
+                        ],
+                        "properties": {
+                          "default": {
+                            "type": "string",
+                            "maxLength": 4096
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "enum"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "choices",
+                          "default"
+                        ],
+                        "properties": {
+                          "default": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "multiSelect"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "choices",
+                          "default"
+                        ],
+                        "properties": {
+                          "default": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "maxItems": 100,
+                            "uniqueItems": true
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "type": {
+                            "const": "credential"
+                          }
+                        }
+                      },
+                      "then": {
+                        "not": {
+                          "required": [
+                            "default"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "maxItems": 64,
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "family",
+              "title",
+              "description",
+              "icon",
+              "schemaVersion",
+              "scopes",
+              "fields"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 161,
+                "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)+:[a-z][a-zA-Z0-9_.-]{0,79}$"
+              },
+              "family": {
+                "const": "theme"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "package": {
+                "const": "theme.json"
+              }
+            },
+            "required": [
+              "id",
+              "family",
+              "title",
+              "package"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 161,
+                "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)+:[a-z][a-zA-Z0-9_.-]{0,79}$"
+              },
+              "family": {
+                "const": "media.descriptor"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "engine": {
+                "enum": [
+                  "reader.epub",
+                  "reader.text",
+                  "reader.pdf",
+                  "reader.comic",
+                  "player.audio",
+                  "player.video"
+                ]
+              },
+              "extensions": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 16,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "family",
+              "title",
+              "engine",
+              "extensions"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "engine": {
+                      "const": "reader.epub"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "extensions": {
+                      "items": {
+                        "enum": [
+                          "epub"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "engine": {
+                      "const": "reader.text"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "extensions": {
+                      "items": {
+                        "enum": [
+                          "txt"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "engine": {
+                      "const": "reader.pdf"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "extensions": {
+                      "items": {
+                        "enum": [
+                          "pdf"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "engine": {
+                      "const": "reader.comic"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "extensions": {
+                      "items": {
+                        "enum": [
+                          "cbz",
+                          "cbr"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "engine": {
+                      "const": "player.audio"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "extensions": {
+                      "items": {
+                        "enum": [
+                          "mp3",
+                          "m4a",
+                          "m4b",
+                          "aac",
+                          "flac",
+                          "ogg",
+                          "oga",
+                          "opus",
+                          "wav"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "engine": {
+                      "const": "player.video"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "extensions": {
+                      "items": {
+                        "enum": [
+                          "mp4",
+                          "mkv",
+                          "mov",
+                          "webm",
+                          "m4v",
+                          "avi",
+                          "ts",
+                          "m2ts",
+                          "3gp"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "maxItems": 64
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "name",
+    "entry",
+    "protocol",
+    "capabilities",
+    "contributions"
+  ],
+  "additionalProperties": false
+}

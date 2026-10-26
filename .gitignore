@@ -1,0 +1,30 @@
+# Build output and local tools
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+node_modules/
+*.tgz
+*.log
+*.pyc
+__pycache__/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+# Credentials and local configuration
+.env
+.env.*
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+.codex*/
+.agents/
+# Generated previews and test output
+test/failures/
+.widget_preview/
+app.*.symbols
+app.*.map.json

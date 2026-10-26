@@ -1,0 +1,72 @@
+{
+  "format": "multiplexr-theme",
+  "version": 2,
+  "id": "example-rounded-modern",
+  "name": "Example rounded-modern",
+  "style": "modern",
+  "font": "system",
+  "dark": {
+    "background": "#101820",
+    "accent": "#86D9F0"
+  },
+  "light": {
+    "background": "#F4F9FB",
+    "accent": "#00627A"
+  },
+  "tokens": {
+    "geometry": "rounded",
+    "font": "system",
+    "icons": "material",
+    "spacing": 1.1,
+    "density": 0,
+    "motionMs": 220,
+    "borderWidth": 1,
+    "cardRadius": 24,
+    "buttonRadius": 18,
+    "fieldRadius": 16,
+    "menuRadius": 16,
+    "dialogRadius": 24,
+    "elevation": 2,
+    "typography": {
+      "heading": {
+        "size": 26,
+        "weight": 700
+      },
+      "title": {
+        "size": 20,
+        "weight": 600
+      },
+      "body": {
+        "size": 16,
+        "height": 1.4
+      },
+      "label": {
+        "size": 14,
+        "weight": 500
+      },
+      "metadata": {
+        "size": 12,
+        "height": 1.4
+      },
+      "timestamp": {
+        "size": 12,
+        "weight": 500
+      }
+    },
+    "darkColors": {
+      "surface": "#101820",
+      "content": "#FFFFFF",
+      "muted": "#C6CDD4",
+      "outline": "#838C97",
+      "playerOverlay": "#101820"
+    },
+    "lightColors": {
+      "surface": "#F4F9FB",
+      "content": "#17191C",
+      "muted": "#555D68",
+      "outline": "#737D89",
+      "playerOverlay": "#101820"
+    }
+  },
+  "assets": []
+}

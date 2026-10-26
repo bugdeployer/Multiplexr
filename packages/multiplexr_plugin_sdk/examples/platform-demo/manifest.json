@@ -1,0 +1,158 @@
+{
+  "id": "org.example.platform",
+  "version": "1.0.0",
+  "name": "Synthetic platform demo",
+  "entry": "plugin.js",
+  "protocol": {
+    "min": 1,
+    "max": 1
+  },
+  "capabilities": {
+    "required": [
+      "settings.read"
+    ],
+    "optional": [
+      "settings.write",
+      "metadata.provide",
+      "artwork.provide",
+      "sources.discover",
+      "import.parse",
+      "export.create",
+      "library.tools",
+      "events.subscribe",
+      "sessions.control",
+      "ui.present",
+      "catalog.read",
+      "catalog.propose",
+      "media.describe"
+    ]
+  },
+  "contributions": [
+    {
+      "id": "org.example.platform:metadata_provider",
+      "family": "metadata.provider",
+      "title": "Example metadata.provider",
+      "handler": "metadata.provider"
+    },
+    {
+      "id": "org.example.platform:artwork_provider",
+      "family": "artwork.provider",
+      "title": "Example artwork.provider",
+      "handler": "artwork.provider"
+    },
+    {
+      "id": "org.example.platform:source_provider",
+      "family": "source.provider",
+      "title": "Example source.provider",
+      "handler": "source.provider"
+    },
+    {
+      "id": "org.example.platform:import_handler",
+      "family": "import.handler",
+      "title": "Example import.handler",
+      "handler": "import.handler"
+    },
+    {
+      "id": "org.example.platform:export_handler",
+      "family": "export.handler",
+      "title": "Example export.handler",
+      "handler": "export.handler"
+    },
+    {
+      "id": "org.example.platform:library_tool",
+      "family": "library.tool",
+      "title": "Example library.tool",
+      "handler": "library.tool"
+    },
+    {
+      "id": "org.example.platform:event_handler",
+      "family": "event.handler",
+      "title": "Example event.handler",
+      "handler": "event.handler",
+      "events": [
+        "org.multiplexr:application.ready",
+        "org.multiplexr:library.changed"
+      ]
+    },
+    {
+      "id": "org.example.platform:ui_action",
+      "family": "ui.action",
+      "title": "Example ui.action",
+      "handler": "ui.action"
+    },
+    {
+      "id": "org.example.platform:ui_section",
+      "family": "ui.section",
+      "title": "Example ui.section",
+      "handler": "ui.section"
+    },
+    {
+      "id": "org.example.platform:ui_destination",
+      "family": "ui.destination",
+      "title": "Example ui.destination",
+      "handler": "ui.destination"
+    },
+    {
+      "id": "org.example.platform:session_hook",
+      "family": "session.hook",
+      "title": "Example session.hook",
+      "handler": "session.hook"
+    },
+    {
+      "id": "org.example.platform:settings",
+      "family": "settings.section",
+      "title": "Example platform preferences",
+      "description": "Synthetic demonstration settings",
+      "icon": "extension",
+      "schemaVersion": 1,
+      "scopes": [
+        "app",
+        "collection"
+      ],
+      "fields": [
+        {
+          "id": "org.example.platform:enabled",
+          "label": "Enable example text",
+          "accessibleLabel": "Enable example text",
+          "type": "boolean",
+          "default": true,
+          "scopes": [
+            "app",
+            "collection"
+          ]
+        },
+        {
+          "id": "org.example.platform:label",
+          "label": "Example label",
+          "accessibleLabel": "Example label",
+          "type": "text",
+          "maxLength": 100,
+          "default": "Example",
+          "scopes": [
+            "app",
+            "collection"
+          ],
+          "enabledWhen": {
+            "field": "org.example.platform:enabled",
+            "equals": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "org.example.platform:publication",
+      "family": "media.descriptor",
+      "title": "Example publication format",
+      "engine": "reader.epub",
+      "extensions": [
+        "epub"
+      ]
+    },
+    {
+      "id": "org.example.platform:rating_tool",
+      "family": "library.tool",
+      "title": "Propose an example rating",
+      "handler": "library.rating"
+    }
+  ]
+}

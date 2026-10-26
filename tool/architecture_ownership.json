@@ -1,0 +1,581 @@
+{
+  "version": 1,
+  "files": {
+    "lib/main.dart": {
+      "layer": "composition",
+      "reason": "Application assembly and lifecycle ownership."
+    },
+    "lib/src/app_lock_layer.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/bootstrap/app_composition.dart": {
+      "layer": "composition",
+      "reason": "Application assembly and lifecycle ownership."
+    },
+    "lib/src/experience/actions/catalog_actions.dart": {
+      "layer": "application",
+      "reason": "Framework-free application policy and typed contracts."
+    },
+    "lib/src/experience/actions/media_actions.dart": {
+      "layer": "application",
+      "reason": "Framework-free application policy and typed contracts."
+    },
+    "lib/src/experience/app_session_scope.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for app_session_scope. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/experience/collection/collection_experience.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/experience/collection/collection_layout.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/experience/collection/collection_scope_router.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/experience/navigation/browse_memory.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/experience/navigation/navigation_coordinator.dart": {
+      "layer": "application",
+      "reason": "Framework-free application policy and typed contracts."
+    },
+    "lib/src/experience/navigation/navigation_origin.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/experience/navigation/opening_policy.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/library/cinema_view.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/collection_lock_layer.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/folder_health.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/legacy_activity_source.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_backup_port.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_collection_sources.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_collection_spaces.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_extension_catalog.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_navigation_settings.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_player_preferences.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_video_artwork.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_video_metadata_jobs.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_video_playback_host.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/legacy_video_session_store.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/library_adapter_host.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for library_adapter_host. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/library/library_controller.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for library_controller. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/library/library_metadata_jobs.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for library_metadata_jobs. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/library/library_models.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/library/metadata_job.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for metadata_job. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/library/native_player.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/library/queue_view.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/series.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/library/series_management.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/series_metadata_job.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for series_metadata_job. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/library/series_view.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/tags.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/video_art.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/video_scope.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for video_scope. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/library/video_space.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/library/watch_details.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/audio_adapter.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/media/audio_library.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for audio_library. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/media/audio_models.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/media/audio_player.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for audio_player. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/media/audio_player_components.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/audio_session.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/media/audio_time.dart": {
+      "layer": "application",
+      "reason": "Framework-free application policy and typed contracts."
+    },
+    "lib/src/media/audiobook_artwork_picker.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/audiobook_cover.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/audiobook_details.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/audiobook_hierarchy.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/media/audiobook_management.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/audiobook_metadata.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/audiobook_metadata_job.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for audiobook_metadata_job. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/media/audiobook_space.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/catalog_progress_adapter.dart": {
+      "layer": "infrastructure",
+      "reason": "Reviewed concrete responsibility: infrastructure policy/model/adapter."
+    },
+    "lib/src/media/contracts.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/media/cue_chapters.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/media/grouping.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/legacy_audiobook_catalog_store.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/legacy_audiobook_metadata_jobs.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/legacy_music_catalog_store.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/legacy_music_discovery.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/legacy_music_session_store.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/media_cover.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/media_ui_patterns.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/music_catalog.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/music_catalog_models.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/media/music_metadata.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/music_metadata_job.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for music_metadata_job. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/media/music_metadata_ui.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/music_playback.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for music_playback. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/media/music_scanner.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/music_space_components.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/music_track_picker.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/navigation_origin_controls.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/navigation_settings.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/session_mini_player.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/shared_audio_mini_player.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/source_recovery.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/storage.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/media/video_navigation.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/media/video_projections.dart": {
+      "layer": "domain",
+      "reason": "Framework-free catalog/value/projection model."
+    },
+    "lib/src/media_space_card.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/metadata/metadata_failures.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/metadata/metadata_targets.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/comic_reader_controller.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for comic_reader_controller. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/comic_reader_layout.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for comic_reader_layout. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/comic_reader_settings.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/reading/comic_volume_keys.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/legacy_reader_handoff.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/legacy_reading_catalog_store.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/legacy_reading_metadata_jobs.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/legacy_reading_sources.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/native_reading_text_source.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/pdf_reader_adapter.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/reader_choice.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/reading/reader_host.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for reader_host. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/reader_opening.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/reading/reading_activity.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for reading_activity. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/reading_app_controller.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for reading_app_controller. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/reading_changes.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for reading_changes. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/reading_comic_notes.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/reading/reading_comic_source.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/reading_document_draft.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/reading_document_transaction.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/reading_library.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for reading_library. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/reading_metadata.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/reading_metadata_host.dart": {
+      "layer": "application",
+      "reason": "Pure metadata command/owner/maintenance/artwork storage port without native service."
+    },
+    "lib/src/reading/reading_metadata_job.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for reading_metadata_job. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/reading_metadata_jobs.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for reading_metadata_jobs. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/reading_scan.dart": {
+      "layer": "infrastructure",
+      "reason": "Persistence, engine, provider, or platform adapter."
+    },
+    "lib/src/reading/reading_space.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/reading/reading_text_source.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for reading_text_source. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/reading_workflow_widgets.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/reading/text_reader_controller.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for text_reader_controller. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/reading/text_reader_layout.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/reading/text_reader_settings.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/settings.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for settings. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/space_preferences.dart": {
+      "layer": "presentation",
+      "reason": "Widget, theme presentation, or UI interaction."
+    },
+    "lib/src/reading/reading_document_scan_plan.dart": {
+      "layer": "infrastructure",
+      "reason": "Native discovery/persistence reconciliation and storage codec implementation."
+    },
+    "lib/src/reading/ebook_opening_host.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for ebook_opening_host. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/media/audiobook_group_repository.dart": {
+      "layer": "application",
+      "reason": "Group policy over injected application commands; no concrete database or platform access."
+    },
+    "lib/src/media/artwork_images.dart": {
+      "layer": "presentation",
+      "reason": "Inherited rendering dependency injection; no filesystem, native channels or storage APIs."
+    },
+    "lib/src/bootstrap/library_assembly.dart": {
+      "layer": "composition",
+      "reason": "Root assembly of injected application owners and concrete adapters."
+    },
+    "lib/src/bootstrap/reading_assembly.dart": {
+      "layer": "composition",
+      "reason": "Root assembly of injected application owners and concrete adapters."
+    },
+    "lib/src/bootstrap/settings_assembly.dart": {
+      "layer": "composition",
+      "reason": "Root assembly for settings commands and native window visibility."
+    },
+    "lib/src/bootstrap/reader_assembly.dart": {
+      "layer": "composition",
+      "reason": "Explicit per-route generation-bound engine, repository and native key assembly."
+    },
+    "lib/src/bootstrap/metadata_assembly.dart": {
+      "layer": "composition",
+      "reason": "Required metadata job providers, workflows, runners and storage adapters assembled at the root."
+    },
+    "lib/src/core/platform/native_audio_engine.dart": {
+      "layer": "infrastructure",
+      "reason": "Native audio channel translation and import normalization only."
+    },
+    "lib/src/bootstrap/audio_assembly.dart": {
+      "layer": "composition",
+      "reason": "Root audio engine/import and maintenance transport assembly."
+    },
+    "lib/src/bootstrap/plugin_assembly.dart": {
+      "layer": "composition",
+      "reason": "Assembles native package backend, gateway and application mutation adapter; wires lifecycle revocation."
+    },
+    "lib/src/experience/plugins/plugin_manager.dart": {
+      "layer": "presenter",
+      "reason": "Supported observable host/session projection and lifecycle adapter for plugin_manager. Dependencies are injected by bootstrap; execution policy belongs to application ports/workflows."
+    },
+    "lib/src/library/legacy_plugin_mutations.dart": {
+      "layer": "infrastructure",
+      "reason": "Revision checked application tag adapter with a native atomic confirmation and idempotency receipt."
+    },
+    "lib/src/experience/plugins/plugin_settings_page.dart": {
+      "layer": "presentation",
+      "reason": "Host-rendered typed contributed settings and scoped navigation."
+    },
+    "lib/src/experience/plugins/plugin_contribution_page.dart": {
+      "layer": "presentation",
+      "reason": "Host-rendered declarative extension UI and scoped routes."
+    },
+    "lib/src/experience/plugins/plugin_metadata_page.dart": {
+      "layer": "presentation",
+      "reason": "Provider-independent installed metadata search and review navigation."
+    },
+    "lib/src/experience/plugins/plugin_artwork_page.dart": {
+      "layer": "presentation",
+      "reason": "Host-owned artwork provider selection, bounded decode and confirmation."
+    },
+    "lib/src/experience/plugins/plugin_session_actions.dart": {
+      "layer": "presentation",
+      "reason": "Host confirmation for bounded session extension commands."
+    },
+    "lib/src/experience/plugins/plugin_tools_page.dart": {
+      "layer": "presentation",
+      "reason": "Host-scoped extension tools, discovery evidence and file transfer confirmation."
+    },
+    "lib/src/experience/plugins/package_manager_page.dart": {
+      "layer": "presentation",
+      "reason": "Shared host package navigation for executable extensions and validated data-only themes."
+    }
+  }
+}

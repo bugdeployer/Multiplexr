@@ -1,0 +1,439 @@
+{
+  "fixtureVersion": 1,
+  "collections": [
+    {
+      "subtype": "music",
+      "metadataEntity": "musicTrack",
+      "roots": [
+        {
+          "uri": "content://fixture/music/root1",
+          "name": "Root 1"
+        },
+        {
+          "uri": "content://fixture/music/root2",
+          "name": "Root 2"
+        }
+      ],
+      "titles": [
+        {
+          "id": "title-1",
+          "metadata": {
+            "creator": "Fixture artist",
+            "album": "Fixture album",
+            "track": 1,
+            "title": "Example 1",
+            "tags": [
+              "keep"
+            ],
+            "rating": 1
+          },
+          "sources": [
+            {
+              "id": "source-1",
+              "uri": "content://fixture/music/file1",
+              "name": "file1",
+              "rootUri": "content://fixture/music/root1",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "title-2",
+          "metadata": {
+            "creator": "Fixture artist",
+            "album": "Fixture album",
+            "track": 1,
+            "title": "Example 2",
+            "tags": [
+              "later"
+            ],
+            "rating": 2
+          },
+          "sources": [
+            {
+              "id": "source-2",
+              "uri": "content://fixture/music/file2",
+              "name": "file2",
+              "rootUri": "content://fixture/music/root2",
+              "available": false
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "primary",
+          "kind": "album",
+          "metadata": {
+            "title": "Fixture group"
+          }
+        },
+        {
+          "id": "playlist",
+          "kind": "playlist",
+          "metadata": {
+            "title": "Fixture playlist"
+          }
+        }
+      ],
+      "memberships": [
+        {
+          "parent": "primary",
+          "child": "title-1",
+          "kind": "structural",
+          "order": 0
+        },
+        {
+          "parent": "primary",
+          "child": "title-2",
+          "kind": "structural",
+          "order": 1
+        },
+        {
+          "parent": "playlist",
+          "child": "title-1",
+          "kind": "curated",
+          "order": 1
+        },
+        {
+          "parent": "playlist",
+          "child": "title-2",
+          "kind": "curated",
+          "order": 0
+        }
+      ]
+    },
+    {
+      "subtype": "ebook",
+      "metadataEntity": "ebook",
+      "roots": [
+        {
+          "uri": "content://fixture/ebook/root1",
+          "name": "Root 1"
+        },
+        {
+          "uri": "content://fixture/ebook/root2",
+          "name": "Root 2"
+        }
+      ],
+      "titles": [
+        {
+          "id": "title-1",
+          "metadata": {
+            "creator": "Fixture author",
+            "format": "epub",
+            "language": "en",
+            "title": "Example 1",
+            "tags": [
+              "keep"
+            ],
+            "rating": 1
+          },
+          "sources": [
+            {
+              "id": "source-1",
+              "uri": "content://fixture/ebook/file1",
+              "name": "file1",
+              "rootUri": "content://fixture/ebook/root1",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "title-2",
+          "metadata": {
+            "creator": "Fixture author",
+            "format": "epub",
+            "language": "en",
+            "title": "Example 2",
+            "tags": [
+              "later"
+            ],
+            "rating": 2
+          },
+          "sources": [
+            {
+              "id": "source-2",
+              "uri": "content://fixture/ebook/file2",
+              "name": "file2",
+              "rootUri": "content://fixture/ebook/root2",
+              "available": false
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "primary",
+          "kind": "series",
+          "metadata": {
+            "title": "Fixture group"
+          }
+        }
+      ],
+      "memberships": [
+        {
+          "parent": "primary",
+          "child": "title-1",
+          "kind": "structural",
+          "order": 0
+        },
+        {
+          "parent": "primary",
+          "child": "title-2",
+          "kind": "structural",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "subtype": "comics",
+      "metadataEntity": "comic",
+      "roots": [
+        {
+          "uri": "content://fixture/comics/root1",
+          "name": "Root 1"
+        },
+        {
+          "uri": "content://fixture/comics/root2",
+          "name": "Root 2"
+        }
+      ],
+      "titles": [
+        {
+          "id": "title-1",
+          "metadata": {
+            "creator": "Fixture artist",
+            "format": "cbz",
+            "volume": 1,
+            "title": "Example 1",
+            "tags": [
+              "keep"
+            ],
+            "rating": 1
+          },
+          "sources": [
+            {
+              "id": "source-1",
+              "uri": "content://fixture/comics/file1",
+              "name": "file1",
+              "rootUri": "content://fixture/comics/root1",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "title-2",
+          "metadata": {
+            "creator": "Fixture artist",
+            "format": "cbz",
+            "volume": 1,
+            "title": "Example 2",
+            "tags": [
+              "later"
+            ],
+            "rating": 2
+          },
+          "sources": [
+            {
+              "id": "source-2",
+              "uri": "content://fixture/comics/file2",
+              "name": "file2",
+              "rootUri": "content://fixture/comics/root2",
+              "available": false
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "primary",
+          "kind": "series",
+          "metadata": {
+            "title": "Fixture group"
+          }
+        }
+      ],
+      "memberships": [
+        {
+          "parent": "primary",
+          "child": "title-1",
+          "kind": "structural",
+          "order": 0
+        },
+        {
+          "parent": "primary",
+          "child": "title-2",
+          "kind": "structural",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "subtype": "photo",
+      "metadataEntity": "image",
+      "roots": [
+        {
+          "uri": "content://fixture/photo/root1",
+          "name": "Root 1"
+        },
+        {
+          "uri": "content://fixture/photo/root2",
+          "name": "Root 2"
+        }
+      ],
+      "titles": [
+        {
+          "id": "title-1",
+          "metadata": {
+            "creator": "Fixture photographer",
+            "width": 1200,
+            "height": 800,
+            "title": "Example 1",
+            "tags": [
+              "keep"
+            ],
+            "rating": 1
+          },
+          "sources": [
+            {
+              "id": "source-1",
+              "uri": "content://fixture/photo/file1",
+              "name": "file1",
+              "rootUri": "content://fixture/photo/root1",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "title-2",
+          "metadata": {
+            "creator": "Fixture photographer",
+            "width": 1200,
+            "height": 800,
+            "title": "Example 2",
+            "tags": [
+              "later"
+            ],
+            "rating": 2
+          },
+          "sources": [
+            {
+              "id": "source-2",
+              "uri": "content://fixture/photo/file2",
+              "name": "file2",
+              "rootUri": "content://fixture/photo/root2",
+              "available": false
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "primary",
+          "kind": "album",
+          "metadata": {
+            "title": "Fixture group"
+          }
+        }
+      ],
+      "memberships": [
+        {
+          "parent": "primary",
+          "child": "title-1",
+          "kind": "structural",
+          "order": 0
+        },
+        {
+          "parent": "primary",
+          "child": "title-2",
+          "kind": "structural",
+          "order": 1
+        }
+      ]
+    },
+    {
+      "subtype": "gif",
+      "metadataEntity": "image",
+      "roots": [
+        {
+          "uri": "content://fixture/gif/root1",
+          "name": "Root 1"
+        },
+        {
+          "uri": "content://fixture/gif/root2",
+          "name": "Root 2"
+        }
+      ],
+      "titles": [
+        {
+          "id": "title-1",
+          "metadata": {
+            "creator": "Fixture animator",
+            "frames": 24,
+            "animated": true,
+            "title": "Example 1",
+            "tags": [
+              "keep"
+            ],
+            "rating": 1
+          },
+          "sources": [
+            {
+              "id": "source-1",
+              "uri": "content://fixture/gif/file1",
+              "name": "file1",
+              "rootUri": "content://fixture/gif/root1",
+              "available": true
+            }
+          ]
+        },
+        {
+          "id": "title-2",
+          "metadata": {
+            "creator": "Fixture animator",
+            "frames": 24,
+            "animated": true,
+            "title": "Example 2",
+            "tags": [
+              "later"
+            ],
+            "rating": 2
+          },
+          "sources": [
+            {
+              "id": "source-2",
+              "uri": "content://fixture/gif/file2",
+              "name": "file2",
+              "rootUri": "content://fixture/gif/root2",
+              "available": false
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "id": "primary",
+          "kind": "album",
+          "metadata": {
+            "title": "Fixture group"
+          }
+        }
+      ],
+      "memberships": [
+        {
+          "parent": "primary",
+          "child": "title-1",
+          "kind": "structural",
+          "order": 0
+        },
+        {
+          "parent": "primary",
+          "child": "title-2",
+          "kind": "structural",
+          "order": 1
+        }
+      ]
+    }
+  ]
+}

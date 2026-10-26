@@ -1,0 +1,24 @@
+{
+  "id": "org.example.notes",
+  "version": "1.0.0",
+  "name": "Notes helper",
+  "entry": "plugin.js",
+  "protocol": {
+    "min": 1,
+    "max": 1
+  },
+  "capabilities": {
+    "required": [
+      "ui.present"
+    ],
+    "optional": []
+  },
+  "contributions": [
+    {
+      "id": "org.example.notes:welcome",
+      "family": "ui.destination",
+      "title": "Notes helper",
+      "handler": "notes.welcome"
+    }
+  ]
+}

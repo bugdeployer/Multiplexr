@@ -1,0 +1,308 @@
+{
+  "format": "multiplexr-library",
+  "version": 1,
+  "createdAt": 1,
+  "collections": [
+    {
+      "id": "tv",
+      "name": "Cinema",
+      "type": "video",
+      "subtype": "cinema",
+      "view": "grid",
+      "player": "internal",
+      "roots": [
+        {
+          "uri": "content://provider/tree/primary%3ACinema",
+          "name": "Cinema"
+        },
+        {
+          "uri": "content://provider/tree/primary%3AOther",
+          "name": "Other"
+        }
+      ],
+      "extensions": [
+        "mp4"
+      ],
+      "locked": false
+    },
+    {
+      "id": "clips",
+      "name": "Clips",
+      "type": "video",
+      "subtype": "videos",
+      "view": "grid",
+      "player": "internal",
+      "roots": [
+        {
+          "uri": "content://provider/tree/primary%3AClips",
+          "name": "Clips"
+        }
+      ],
+      "extensions": [
+        "mp4"
+      ],
+      "locked": false
+    },
+    {
+      "id": "audio",
+      "name": "Audio",
+      "type": "audiobook",
+      "subtype": "videos",
+      "view": "grid",
+      "player": "internal",
+      "roots": [
+        {
+          "uri": "content://provider/tree/primary%3AAudio",
+          "name": "Audio"
+        }
+      ],
+      "extensions": [
+        "m4b",
+        "mp3"
+      ],
+      "locked": true,
+      "includeInGlobalAudio": false,
+      "openAction": "details",
+      "audioRate": 1.25
+    }
+  ],
+  "assets": [
+    {
+      "id": "movie",
+      "collectionId": "tv",
+      "uri": "content://provider/document/movie",
+      "filename": "Movie.mp4",
+      "metadata": {
+        "title": "Movie",
+        "tags": "Keep"
+      },
+      "rootUri": "content://provider/tree/primary%3ACinema",
+      "relativePath": "Show/Season 1/Movie.mp4",
+      "positionMs": 4200,
+      "favorite": true,
+      "watched": false,
+      "available": false,
+      "size": 100,
+      "metadataSource": "manual",
+      "contentSubtype": "movies"
+    },
+    {
+      "id": "episode-a",
+      "collectionId": "tv",
+      "uri": "content://provider/document/episode-a",
+      "filename": "Show.S01E01.mp4",
+      "metadata": {
+        "series": "Show",
+        "season": "1",
+        "episode": "1",
+        "groupId": "manual-show",
+        "groupOrder": "2",
+        "structuralSeriesId": "local:root:show",
+        "seriesPoster": "https://example.com/cover.jpg",
+        "seriesPosterSource": "manual"
+      },
+      "rootUri": "content://provider/tree/primary%3ACinema",
+      "relativePath": "Show/Season 1/Show.S01E01.mp4",
+      "positionMs": 4200,
+      "favorite": true,
+      "watched": false,
+      "available": false,
+      "size": 100,
+      "metadataSource": "manual",
+      "contentSubtype": "tv"
+    },
+    {
+      "id": "episode-b",
+      "collectionId": "tv",
+      "uri": "content://provider/document/episode-b",
+      "filename": "Show.S01E01.1080p.mp4",
+      "metadata": {
+        "series": "Show",
+        "season": "1",
+        "episode": "1",
+        "groupId": "manual-show",
+        "groupOrder": "2"
+      },
+      "rootUri": "content://provider/tree/primary%3ACinema",
+      "relativePath": "Show/Season 1/Show.S01E01.1080p.mp4",
+      "positionMs": 4200,
+      "favorite": true,
+      "watched": false,
+      "available": false,
+      "size": 100,
+      "metadataSource": "manual",
+      "contentSubtype": "tv"
+    },
+    {
+      "id": "clip",
+      "collectionId": "clips",
+      "uri": "content://provider/document/clip",
+      "filename": "Clip.mp4",
+      "metadata": {
+        "title": "Clip"
+      },
+      "rootUri": "content://provider/tree/primary%3ACinema",
+      "relativePath": "Show/Season 1/Clip.mp4",
+      "positionMs": 4200,
+      "favorite": true,
+      "watched": false,
+      "available": false,
+      "size": 100,
+      "metadataSource": "manual",
+      "contentSubtype": "videos"
+    }
+  ],
+  "queue": [
+    "[\"tv\",\"episode-b\"]",
+    "[\"clips\",\"clip\"]"
+  ],
+  "state": {
+    "audio:library": {
+      "version": 1,
+      "books": [
+        {
+          "id": {
+            "kind": "audiobook",
+            "collectionId": "audio",
+            "itemId": "folder:Saga/One"
+          },
+          "metadata": {
+            "title": "folder:Saga/One",
+            "series": "Saga",
+            "seriesId": "manual-saga",
+            "seriesOrder": 1,
+            "cover": "https://example.com/cover.jpg",
+            "coverSource": "manual",
+            "tags": [
+              "Keep"
+            ]
+          },
+          "files": [
+            {
+              "id": "compiled",
+              "uri": "content://provider/document/compiled",
+              "filename": "compiled.mp3",
+              "durationMs": 120000
+            }
+          ],
+          "chapters": [
+            {
+              "id": "m4b-1",
+              "fileId": "compiled",
+              "title": "m4b-1",
+              "startMs": 0,
+              "endMs": 60000
+            },
+            {
+              "id": "m4b-2",
+              "fileId": "compiled",
+              "title": "m4b-2",
+              "startMs": 60000,
+              "endMs": 120000
+            }
+          ]
+        },
+        {
+          "id": {
+            "kind": "audiobook",
+            "collectionId": "audio",
+            "itemId": "folder:Saga/Two"
+          },
+          "metadata": {
+            "title": "folder:Saga/Two",
+            "series": "Saga",
+            "seriesId": "manual-saga",
+            "seriesOrder": 2,
+            "cover": "https://example.com/cover.jpg",
+            "coverSource": "manual",
+            "tags": [
+              "Keep"
+            ]
+          },
+          "files": [
+            {
+              "id": "part-1",
+              "uri": "content://provider/document/part-1",
+              "filename": "part-1.mp3",
+              "durationMs": 60000
+            },
+            {
+              "id": "part-2",
+              "uri": "content://provider/document/part-2",
+              "filename": "part-2.mp3",
+              "durationMs": 60000
+            }
+          ],
+          "chapters": [
+            {
+              "id": "mp3-1",
+              "fileId": "part-1",
+              "title": "mp3-1",
+              "startMs": 0,
+              "endMs": 60000
+            },
+            {
+              "id": "mp3-2",
+              "fileId": "part-2",
+              "title": "mp3-2",
+              "startMs": 0,
+              "endMs": 60000
+            }
+          ]
+        }
+      ],
+      "seriesMetadata": {
+        "audio:manual-saga": {
+          "id": "audio:manual-saga",
+          "collectionId": "audio",
+          "title": "Saga",
+          "cover": "https://example.com/group.jpg"
+        }
+      }
+    },
+    "progress:[\"audiobook\",\"audio\",\"folder:Saga\\/One\"]": {
+      "id": {
+        "kind": "audiobook",
+        "collectionId": "audio",
+        "itemId": "folder:Saga/One"
+      },
+      "chapterId": "m4b-2",
+      "positionMs": 3000,
+      "finished": false,
+      "bookmarks": [
+        {
+          "chapterId": "m4b-1",
+          "positionMs": 1200,
+          "label": "Keep bookmark"
+        }
+      ]
+    },
+    "media:settings:[\"audio\",\"series:Saga\\/One\"]": {
+      "openAction": "play",
+      "rate": 1.5
+    },
+    "queue:audiobook": {
+      "items": [
+        {
+          "kind": "audiobook",
+          "collectionId": "audio",
+          "itemId": "folder:Saga/Two"
+        },
+        {
+          "kind": "audiobook",
+          "collectionId": "audio",
+          "itemId": "folder:Saga/One"
+        }
+      ]
+    },
+    "spaces:display": {
+      "audiobooks": {
+        "source": "pinned",
+        "pins": [
+          "[\"audio\",\"folder:Saga/Two\"]"
+        ],
+        "confirmExit": true
+      }
+    }
+  }
+}

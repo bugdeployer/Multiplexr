@@ -1,0 +1,38 @@
+{
+  "id": "org.example.inspector",
+  "name": "Installed inspector",
+  "version": "1.0.0",
+  "entry": "plugin.js",
+  "protocol": {
+    "min": 1,
+    "max": 1
+  },
+  "capabilities": {
+    "required": [
+      "runtime.ping"
+    ],
+    "optional": [
+      "catalog.read"
+    ]
+  },
+  "contributions": [
+    {
+      "id": "org.example.inspector:inspect",
+      "family": "library.tool",
+      "title": "Inspect",
+      "handler": "tool.inspect"
+    },
+    {
+      "id": "org.example.inspector:read",
+      "family": "library.tool",
+      "title": "Read",
+      "handler": "tool.read"
+    },
+    {
+      "id": "org.example.inspector:loop",
+      "family": "library.tool",
+      "title": "Loop",
+      "handler": "tool.loop"
+    }
+  ]
+}

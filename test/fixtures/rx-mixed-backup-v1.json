@@ -1,0 +1,1080 @@
+{
+  "format": "multiplexr-library",
+  "version": 1,
+  "createdAt": 1,
+  "collections": [
+    {
+      "id": "tv",
+      "name": "Cinema",
+      "type": "video",
+      "subtype": "cinema",
+      "view": "grid",
+      "player": "internal",
+      "roots": [
+        {
+          "uri": "content://provider/tree/primary%3ACinema",
+          "name": "Cinema"
+        },
+        {
+          "uri": "content://provider/tree/primary%3AOther",
+          "name": "Other"
+        }
+      ],
+      "extensions": [
+        "mp4"
+      ],
+      "locked": false
+    },
+    {
+      "id": "clips",
+      "name": "Clips",
+      "type": "video",
+      "subtype": "videos",
+      "view": "grid",
+      "player": "internal",
+      "roots": [
+        {
+          "uri": "content://provider/tree/primary%3AClips",
+          "name": "Clips"
+        }
+      ],
+      "extensions": [
+        "mp4"
+      ],
+      "locked": false
+    },
+    {
+      "id": "audio",
+      "name": "Audio",
+      "type": "audiobook",
+      "subtype": "videos",
+      "view": "grid",
+      "player": "internal",
+      "roots": [
+        {
+          "uri": "content://provider/tree/primary%3AAudio",
+          "name": "Audio"
+        }
+      ],
+      "extensions": [
+        "m4b",
+        "mp3"
+      ],
+      "locked": true,
+      "includeInGlobalAudio": false,
+      "openAction": "details",
+      "audioRate": 1.25
+    },
+    {
+      "id": "rx-music",
+      "name": "RX Music",
+      "type": "audio",
+      "includeInGlobalAudio": true,
+      "subtype": "music",
+      "view": "grid",
+      "player": "internal",
+      "roots": [],
+      "locked": false,
+      "includeInGlobalCinema": true,
+      "includeInGlobalVideos": true,
+      "openAction": "automatic",
+      "audioRate": 1.0,
+      "autoplayNext": false,
+      "allowFolders": false,
+      "sort": "title",
+      "filter": "all",
+      "cardSize": 180.0,
+      "scrollOffset": 0.0,
+      "folder": "",
+      "lastScanAt": 0,
+      "rootHealth": {},
+      "extensions": [
+        "mp4",
+        "mkv",
+        "mov",
+        "webm",
+        "m4v"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "movie",
+      "collectionId": "tv",
+      "uri": "content://provider/document/movie",
+      "filename": "Movie.mp4",
+      "metadata": {
+        "title": "Movie",
+        "tags": "Keep"
+      },
+      "rootUri": "content://provider/tree/primary%3ACinema",
+      "relativePath": "Show/Season 1/Movie.mp4",
+      "positionMs": 4200,
+      "favorite": true,
+      "watched": false,
+      "available": false,
+      "size": 100,
+      "metadataSource": "manual",
+      "contentSubtype": "movies"
+    },
+    {
+      "id": "episode-a",
+      "collectionId": "tv",
+      "uri": "content://provider/document/episode-a",
+      "filename": "Show.S01E01.mp4",
+      "metadata": {
+        "series": "Show",
+        "season": "1",
+        "episode": "1",
+        "groupId": "manual-show",
+        "groupOrder": "2",
+        "structuralSeriesId": "local:root:show",
+        "seriesPoster": "https://example.com/cover.jpg",
+        "seriesPosterSource": "manual"
+      },
+      "rootUri": "content://provider/tree/primary%3ACinema",
+      "relativePath": "Show/Season 1/Show.S01E01.mp4",
+      "positionMs": 4200,
+      "favorite": true,
+      "watched": false,
+      "available": false,
+      "size": 100,
+      "metadataSource": "manual",
+      "contentSubtype": "tv"
+    },
+    {
+      "id": "episode-b",
+      "collectionId": "tv",
+      "uri": "content://provider/document/episode-b",
+      "filename": "Show.S01E01.1080p.mp4",
+      "metadata": {
+        "series": "Show",
+        "season": "1",
+        "episode": "1",
+        "groupId": "manual-show",
+        "groupOrder": "2"
+      },
+      "rootUri": "content://provider/tree/primary%3ACinema",
+      "relativePath": "Show/Season 1/Show.S01E01.1080p.mp4",
+      "positionMs": 4200,
+      "favorite": true,
+      "watched": false,
+      "available": false,
+      "size": 100,
+      "metadataSource": "manual",
+      "contentSubtype": "tv"
+    },
+    {
+      "id": "clip",
+      "collectionId": "clips",
+      "uri": "content://provider/document/clip",
+      "filename": "Clip.mp4",
+      "metadata": {
+        "title": "Clip"
+      },
+      "rootUri": "content://provider/tree/primary%3ACinema",
+      "relativePath": "Show/Season 1/Clip.mp4",
+      "positionMs": 4200,
+      "favorite": true,
+      "watched": false,
+      "available": false,
+      "size": 100,
+      "metadataSource": "manual",
+      "contentSubtype": "videos"
+    }
+  ],
+  "queue": [
+    "[\"tv\",\"episode-b\"]",
+    "[\"clips\",\"clip\"]"
+  ],
+  "state": {
+    "audio:library": {
+      "version": 1,
+      "books": [
+        {
+          "id": {
+            "kind": "audiobook",
+            "collectionId": "audio",
+            "itemId": "folder:Saga/One"
+          },
+          "metadata": {
+            "title": "folder:Saga/One",
+            "series": "Saga",
+            "seriesId": "manual-saga",
+            "seriesOrder": 1,
+            "cover": "https://example.com/cover.jpg",
+            "coverSource": "manual",
+            "tags": [
+              "Keep"
+            ]
+          },
+          "files": [
+            {
+              "id": "compiled",
+              "uri": "content://provider/document/compiled",
+              "filename": "compiled.mp3",
+              "durationMs": 120000
+            }
+          ],
+          "chapters": [
+            {
+              "id": "m4b-1",
+              "fileId": "compiled",
+              "title": "m4b-1",
+              "startMs": 0,
+              "endMs": 60000
+            },
+            {
+              "id": "m4b-2",
+              "fileId": "compiled",
+              "title": "m4b-2",
+              "startMs": 60000,
+              "endMs": 120000
+            }
+          ]
+        },
+        {
+          "id": {
+            "kind": "audiobook",
+            "collectionId": "audio",
+            "itemId": "folder:Saga/Two"
+          },
+          "metadata": {
+            "title": "folder:Saga/Two",
+            "series": "Saga",
+            "seriesId": "manual-saga",
+            "seriesOrder": 2,
+            "cover": "https://example.com/cover.jpg",
+            "coverSource": "manual",
+            "tags": [
+              "Keep"
+            ]
+          },
+          "files": [
+            {
+              "id": "part-1",
+              "uri": "content://provider/document/part-1",
+              "filename": "part-1.mp3",
+              "durationMs": 60000
+            },
+            {
+              "id": "part-2",
+              "uri": "content://provider/document/part-2",
+              "filename": "part-2.mp3",
+              "durationMs": 60000
+            }
+          ],
+          "chapters": [
+            {
+              "id": "mp3-1",
+              "fileId": "part-1",
+              "title": "mp3-1",
+              "startMs": 0,
+              "endMs": 60000
+            },
+            {
+              "id": "mp3-2",
+              "fileId": "part-2",
+              "title": "mp3-2",
+              "startMs": 0,
+              "endMs": 60000
+            }
+          ]
+        }
+      ],
+      "seriesMetadata": {
+        "audio:manual-saga": {
+          "id": "audio:manual-saga",
+          "collectionId": "audio",
+          "title": "Saga",
+          "cover": "https://example.com/group.jpg"
+        }
+      }
+    },
+    "progress:[\"audiobook\",\"audio\",\"folder:Saga\\/One\"]": {
+      "id": {
+        "kind": "audiobook",
+        "collectionId": "audio",
+        "itemId": "folder:Saga/One"
+      },
+      "chapterId": "m4b-2",
+      "positionMs": 3000,
+      "finished": false,
+      "bookmarks": [
+        {
+          "chapterId": "m4b-1",
+          "positionMs": 1200,
+          "label": "Keep bookmark"
+        }
+      ]
+    },
+    "media:settings:[\"audio\",\"series:Saga\\/One\"]": {
+      "openAction": "play",
+      "rate": 1.5
+    },
+    "queue:audiobook": {
+      "items": [
+        {
+          "kind": "audiobook",
+          "collectionId": "audio",
+          "itemId": "folder:Saga/Two"
+        },
+        {
+          "kind": "audiobook",
+          "collectionId": "audio",
+          "itemId": "folder:Saga/One"
+        }
+      ]
+    },
+    "spaces:display": {
+      "audiobooks": {
+        "source": "pinned",
+        "pins": [
+          "[\"audio\",\"folder:Saga/Two\"]"
+        ],
+        "confirmExit": true
+      }
+    },
+    "reading:library:v1": {
+      "version": 1,
+      "collections": [
+        {
+          "id": "books:[]",
+          "name": "books:[]",
+          "subtype": "ebook",
+          "locked": true,
+          "includeInGlobal": false,
+          "roots": [
+            {
+              "uri": "content://local/books:%5B%5D",
+              "name": "Root"
+            }
+          ]
+        },
+        {
+          "id": "comics",
+          "name": "comics",
+          "subtype": "comics",
+          "locked": false,
+          "includeInGlobal": true,
+          "roots": [
+            {
+              "uri": "content://local/comics",
+              "name": "Root"
+            }
+          ]
+        },
+        {
+          "id": "manga",
+          "name": "RX manga",
+          "subtype": "comics",
+          "locked": false,
+          "includeInGlobal": true,
+          "roots": [
+            {
+              "uri": "content://local/comics",
+              "name": "Root"
+            }
+          ]
+        },
+        {
+          "id": "manhua",
+          "name": "RX manhua",
+          "subtype": "comics",
+          "locked": false,
+          "includeInGlobal": true,
+          "roots": [
+            {
+              "uri": "content://local/comics",
+              "name": "Root"
+            }
+          ]
+        },
+        {
+          "id": "manhwa",
+          "name": "RX manhwa",
+          "subtype": "comics",
+          "locked": false,
+          "includeInGlobal": true,
+          "roots": [
+            {
+              "uri": "content://local/comics",
+              "name": "Root"
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "collectionId": "books:[]",
+          "id": "saga",
+          "subtype": "ebook",
+          "metadata": {
+            "title": "Saga",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": ""
+          }
+        },
+        {
+          "collectionId": "comics",
+          "id": "series",
+          "subtype": "comics",
+          "metadata": {
+            "title": "Series",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": ""
+          }
+        },
+        {
+          "collectionId": "manga",
+          "id": "series",
+          "subtype": "comics",
+          "metadata": {
+            "title": "Series",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": "",
+            "comicStyle": "manga"
+          }
+        },
+        {
+          "collectionId": "manhua",
+          "id": "series",
+          "subtype": "comics",
+          "metadata": {
+            "title": "Series",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": "",
+            "comicStyle": "manhua"
+          }
+        },
+        {
+          "collectionId": "manhwa",
+          "id": "series",
+          "subtype": "comics",
+          "metadata": {
+            "title": "Series",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": "",
+            "comicStyle": "manhwa"
+          }
+        }
+      ],
+      "titles": [
+        {
+          "collectionId": "books:[]",
+          "id": "standalone",
+          "subtype": "ebook",
+          "role": "publication",
+          "format": "epub",
+          "metadata": {
+            "title": "standalone",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": ""
+          },
+          "source": {
+            "id": "source/standalone",
+            "uri": "content://local/books:%5B%5D/standalone",
+            "name": "standalone",
+            "rootUri": "content://local/books:%5B%5D",
+            "revision": "revision-1",
+            "available": false
+          },
+          "readingOrder": [
+            {
+              "id": "first",
+              "href": "OPS/chapter1.xhtml",
+              "label": "First"
+            },
+            {
+              "id": "second",
+              "href": "OPS/chapter2.xhtml",
+              "label": "Second"
+            }
+          ]
+        },
+        {
+          "collectionId": "books:[]",
+          "id": "volume",
+          "subtype": "ebook",
+          "role": "publication",
+          "format": "epub",
+          "metadata": {
+            "title": "volume",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": ""
+          },
+          "source": {
+            "id": "source/volume",
+            "uri": "content://local/books:%5B%5D/volume",
+            "name": "volume",
+            "rootUri": "content://local/books:%5B%5D",
+            "revision": "revision-1",
+            "available": true
+          },
+          "readingOrder": [
+            {
+              "id": "first",
+              "href": "OPS/chapter1.xhtml",
+              "label": "First"
+            },
+            {
+              "id": "second",
+              "href": "OPS/chapter2.xhtml",
+              "label": "Second"
+            }
+          ]
+        },
+        {
+          "collectionId": "comics",
+          "id": "issue",
+          "subtype": "comics",
+          "role": "publication",
+          "format": "cbz",
+          "metadata": {
+            "title": "issue",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": ""
+          },
+          "source": {
+            "id": "source/issue",
+            "uri": "content://local/comics/issue",
+            "name": "issue",
+            "rootUri": "content://local/comics",
+            "revision": "revision-1",
+            "available": true
+          },
+          "readingOrder": [
+            {
+              "id": "first",
+              "href": "001.png",
+              "label": "First"
+            },
+            {
+              "id": "second",
+              "href": "002.png",
+              "label": "Second"
+            }
+          ]
+        },
+        {
+          "collectionId": "manga",
+          "id": "issue",
+          "subtype": "comics",
+          "role": "publication",
+          "format": "cbz",
+          "metadata": {
+            "title": "issue",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": "",
+            "comicStyle": "manga"
+          },
+          "source": {
+            "id": "source/issue",
+            "uri": "content://local/comics/issue",
+            "name": "issue",
+            "rootUri": "content://local/comics",
+            "revision": "revision-1",
+            "available": true
+          },
+          "readingOrder": [
+            {
+              "id": "first",
+              "href": "001.png",
+              "label": "First"
+            },
+            {
+              "id": "second",
+              "href": "002.png",
+              "label": "Second"
+            }
+          ]
+        },
+        {
+          "collectionId": "manhua",
+          "id": "issue",
+          "subtype": "comics",
+          "role": "publication",
+          "format": "cbz",
+          "metadata": {
+            "title": "issue",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": "",
+            "comicStyle": "manhua"
+          },
+          "source": {
+            "id": "source/issue",
+            "uri": "content://local/comics/issue",
+            "name": "issue",
+            "rootUri": "content://local/comics",
+            "revision": "revision-1",
+            "available": true
+          },
+          "readingOrder": [
+            {
+              "id": "first",
+              "href": "001.png",
+              "label": "First"
+            },
+            {
+              "id": "second",
+              "href": "002.png",
+              "label": "Second"
+            }
+          ]
+        },
+        {
+          "collectionId": "manhwa",
+          "id": "issue",
+          "subtype": "comics",
+          "role": "publication",
+          "format": "cbz",
+          "metadata": {
+            "title": "issue",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": "",
+            "comicStyle": "manhwa"
+          },
+          "source": {
+            "id": "source/issue",
+            "uri": "content://local/comics/issue",
+            "name": "issue",
+            "rootUri": "content://local/comics",
+            "revision": "revision-1",
+            "available": true
+          },
+          "readingOrder": [
+            {
+              "id": "first",
+              "href": "001.png",
+              "label": "First"
+            },
+            {
+              "id": "second",
+              "href": "002.png",
+              "label": "Second"
+            }
+          ]
+        }
+      ],
+      "memberships": [
+        {
+          "collectionId": "books:[]",
+          "parentId": "saga",
+          "titleId": "volume",
+          "order": 0
+        },
+        {
+          "collectionId": "comics",
+          "parentId": "series",
+          "titleId": "issue",
+          "order": 0
+        },
+        {
+          "collectionId": "manga",
+          "parentId": "series",
+          "titleId": "issue",
+          "order": 0
+        },
+        {
+          "collectionId": "manhua",
+          "parentId": "series",
+          "titleId": "issue",
+          "order": 0
+        },
+        {
+          "collectionId": "manhwa",
+          "parentId": "series",
+          "titleId": "issue",
+          "order": 0
+        }
+      ],
+      "progress": [
+        {
+          "collectionId": "books:[]",
+          "id": "standalone",
+          "sourceId": "source/standalone",
+          "sourceRevision": "revision-1",
+          "finished": false,
+          "location": {
+            "version": 1,
+            "kind": "text",
+            "resourceId": "second",
+            "locatorType": "cssSelector",
+            "locator": "#paragraph-2",
+            "progression": 0.35,
+            "before": "before",
+            "highlight": "text",
+            "after": "after"
+          }
+        },
+        {
+          "collectionId": "comics",
+          "id": "issue",
+          "sourceId": "source/issue",
+          "sourceRevision": "revision-1",
+          "finished": false,
+          "location": {
+            "version": 1,
+            "kind": "page",
+            "pageId": "second",
+            "pageIndex": 1,
+            "offset": 0.6
+          }
+        }
+      ],
+      "settings": [
+        {
+          "scope": "app",
+          "subtype": "ebook",
+          "values": {
+            "fontSize": 18.0,
+            "palette": "sepia"
+          }
+        },
+        {
+          "scope": "collection",
+          "subtype": "ebook",
+          "collectionId": "books:[]",
+          "values": {
+            "fontSize": 20.0
+          }
+        },
+        {
+          "scope": "group",
+          "subtype": "ebook",
+          "collectionId": "books:[]",
+          "entityId": "saga",
+          "values": {
+            "fontSize": 22.0
+          }
+        },
+        {
+          "scope": "title",
+          "subtype": "ebook",
+          "collectionId": "books:[]",
+          "entityId": "volume",
+          "values": {
+            "fontSize": 24.0
+          }
+        },
+        {
+          "scope": "title",
+          "subtype": "comics",
+          "collectionId": "comics",
+          "entityId": "issue",
+          "values": {
+            "comicMode": "webtoon",
+            "direction": "rtl",
+            "fit": "width"
+          }
+        }
+      ]
+    },
+    "reading:index:v1": {
+      "version": 1,
+      "entries": [
+        {
+          "collectionId": "books:[]",
+          "id": "standalone",
+          "sourceKey": "source/standalone",
+          "rootUri": "content://local/books:%5B%5D",
+          "relativePath": "standalone",
+          "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "metadata": {
+            "title": "standalone",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": ""
+          },
+          "cover": "",
+          "manualFields": [
+            "title"
+          ],
+          "manualOrder": false,
+          "manualCover": false,
+          "encoding": ""
+        },
+        {
+          "collectionId": "books:[]",
+          "id": "volume",
+          "sourceKey": "source/volume",
+          "rootUri": "content://local/books:%5B%5D",
+          "relativePath": "volume",
+          "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "metadata": {
+            "title": "volume",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": ""
+          },
+          "cover": "",
+          "manualFields": [],
+          "manualOrder": false,
+          "manualCover": false,
+          "encoding": ""
+        },
+        {
+          "collectionId": "comics",
+          "id": "issue",
+          "sourceKey": "source/issue",
+          "rootUri": "content://local/comics",
+          "relativePath": "issue",
+          "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "metadata": {
+            "title": "issue",
+            "authors": [
+              "Author"
+            ],
+            "description": "",
+            "language": "en",
+            "identifier": ""
+          },
+          "cover": "",
+          "manualFields": [],
+          "manualOrder": false,
+          "manualCover": false,
+          "encoding": ""
+        }
+      ],
+      "roots": [
+        {
+          "collectionId": "books:[]",
+          "uri": "content://local/books:%5B%5D",
+          "complete": true
+        },
+        {
+          "collectionId": "comics",
+          "uri": "content://local/comics",
+          "complete": true
+        }
+      ],
+      "replacements": [],
+      "orders": []
+    },
+    "reading:management:v1": {
+      "version": 1,
+      "entities": [
+        {
+          "collectionId": "books:[]",
+          "id": "standalone",
+          "kind": "title",
+          "tags": [
+            "Favourite"
+          ],
+          "manualFields": [
+            "title"
+          ],
+          "cover": "",
+          "coverMode": "fit",
+          "manualCover": false,
+          "provider": "",
+          "candidateId": ""
+        },
+        {
+          "collectionId": "books:[]",
+          "id": "saga",
+          "kind": "group",
+          "tags": [
+            "Favourite"
+          ],
+          "manualFields": [
+            "title"
+          ],
+          "cover": "",
+          "coverMode": "fit",
+          "manualCover": false,
+          "provider": "",
+          "candidateId": ""
+        },
+        {
+          "collectionId": "comics",
+          "id": "issue",
+          "kind": "title",
+          "tags": [
+            "Favourite"
+          ],
+          "manualFields": [
+            "title"
+          ],
+          "cover": "",
+          "coverMode": "fit",
+          "manualCover": false,
+          "provider": "",
+          "candidateId": ""
+        }
+      ],
+      "collections": [
+        {
+          "collectionId": "books:[]",
+          "layout": "list",
+          "sort": "title",
+          "openAction": "details"
+        }
+      ],
+      "jobs": [
+        {
+          "collectionId": "books:[]",
+          "provider": "openlibrary",
+          "remaining": [
+            "volume"
+          ],
+          "done": 1,
+          "total": 2,
+          "entries": [
+            {
+              "id": "standalone",
+              "status": "review",
+              "error": "",
+              "candidates": [
+                {
+                  "id": "/books/OL1M",
+                  "values": {
+                    "title": "Matched edition",
+                    "authors": [
+                      "Author"
+                    ],
+                    "identifier": "OLID:OL1M",
+                    "edition": "OL1M"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "pageNotes": [
+        {
+          "id": "page-note",
+          "collectionId": "comics",
+          "titleId": "issue",
+          "sourceId": "source/issue",
+          "sourceRevision": "revision-1",
+          "pageId": "second",
+          "pageIndex": 1,
+          "offset": 0.6,
+          "kind": "note",
+          "note": "Panel detail",
+          "label": "Page 2"
+        }
+      ]
+    },
+    "reading:annotations:v1": {
+      "version": 1,
+      "items": [
+        {
+          "id": "note-1",
+          "collectionId": "books:[]",
+          "titleId": "standalone",
+          "sourceId": "source/standalone",
+          "sourceRevision": "revision-1",
+          "resourceId": "first",
+          "start": 0,
+          "end": 5,
+          "quote": "Hello",
+          "before": "",
+          "after": " world",
+          "kind": "note",
+          "note": "My note",
+          "label": "",
+          "color": "yellow"
+        }
+      ]
+    },
+    "music:library": {
+      "version": 1,
+      "tracks": [
+        {
+          "id": {
+            "kind": "music",
+            "collectionId": "rx-music",
+            "itemId": "751f83dae89cbb8eb373e2eb2dea75185086b9ec9d3a6265c7c71654b17eb0fb"
+          },
+          "source": {
+            "id": "rx-track",
+            "uri": "content://audio/rx-track",
+            "filename": "Track rx-track.mp3",
+            "title": "",
+            "album": "Album",
+            "artist": "Artist",
+            "author": "",
+            "genre": "",
+            "durationMs": 0,
+            "disc": 0,
+            "track": 1
+          },
+          "rootId": "root",
+          "folderId": "folder",
+          "albumId": "db6043288517675d78d84a438345e27ca3997318a088f81d81312a9ab24037a8",
+          "metadata": {
+            "title": "Track rx-track",
+            "artist": "Artist",
+            "album": "Album",
+            "albumArtist": "",
+            "genre": "",
+            "disc": 0,
+            "track": 1,
+            "durationMs": 0,
+            "cover": "",
+            "coverSource": "",
+            "recordingId": "",
+            "releaseId": "",
+            "releaseGroupId": "",
+            "metadataSource": ""
+          },
+          "available": true,
+          "overrides": {}
+        }
+      ]
+    }
+  }
+}

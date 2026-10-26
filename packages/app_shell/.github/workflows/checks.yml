@@ -1,0 +1,36 @@
+name: Shell checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+      - run: python tool/theme_author.py validate theme_examples/rounded-modern.theme.json
+      - run: python tool/theme_author.py build theme_examples/stepped-retro.theme.json "${{ runner.temp }}/theme.json"
+      - run: flutter pub get && flutter analyze
+        working-directory: example
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: sdk/plugin/package-lock.json
+      - run: npm ci
+        working-directory: sdk/plugin
+      - run: npm test
+        working-directory: sdk/plugin
+      - run: npm run typecheck
+        working-directory: sdk/plugin
+      - run: npm run test:consumer
+        working-directory: sdk/plugin

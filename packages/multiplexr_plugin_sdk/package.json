@@ -1,0 +1,46 @@
+{
+  "name": "multiplexr_plugin_sdk",
+  "version": "1.1.0",
+  "description": "Reusable AppShell protocol-1 plugin SDK; compatible Multiplexr host profile",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/sdk.js"
+    },
+    "./testing": {
+      "types": "./src/fake-host.d.ts",
+      "default": "./src/fake-host.js"
+    },
+    "./contributions": {
+      "types": "./src/contributions.d.ts",
+      "default": "./src/contributions.js"
+    },
+    "./manifest": {
+      "types": "./src/manifest.d.ts",
+      "default": "./src/manifest.js"
+    },
+    "./app-shell": {
+      "types": "./src/app-shell.d.ts",
+      "default": "./src/app-shell.js"
+    }
+  },
+  "bin": {
+    "multiplexr-plugin": "./bin/plugin.js",
+    "app-shell-plugin": "./bin/plugin.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "typecheck": "tsc --noEmit",
+    "test:consumer": "node tool/verify-consumer.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "typescript": "^5.9.3"
+  },
+  "license": "GPL-3.0-only"
+}

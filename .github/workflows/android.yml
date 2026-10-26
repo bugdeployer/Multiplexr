@@ -1,0 +1,39 @@
+name: Android checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Independent plugin SDK contracts
+        working-directory: packages/multiplexr_plugin_sdk
+        run: npm ci && npm test && npm run typecheck && npm run test:consumer
+      - name: Architecture boundaries
+        run: |
+          python3 -m unittest discover -s tool -p 'test_*.py'
+          python3 tool/check_architecture.py --strict-architecture --report build/rx-boundaries.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter pub get && flutter analyze && flutter test
+        working-directory: packages/app_shell
+      - run: flutter pub get && flutter analyze
+        working-directory: packages/app_shell/example
+      - run: flutter analyze
+      - run: flutter test
+      - run: flutter build apk --debug
+      - run: bash android/gradlew -p android :app:testDebugUnitTest

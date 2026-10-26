@@ -1,0 +1,16 @@
+{
+  "id": "org.example.synthetic",
+  "name": "Synthetic library helper",
+  "version": "0.1.0",
+  "entry": "plugin.js",
+  "protocol": {"min": 1, "max": 1},
+  "capabilities": {"required": ["runtime.ping"], "optional": ["settings.read", "settings.write", "catalog.read"]},
+  "contributions": [
+    {"id": "org.example.synthetic:metadata", "family": "metadata.provider", "title": "Synthetic metadata", "handler": "metadata.search"},
+    {"id": "org.example.synthetic:preferences", "family": "settings.section", "title": "Synthetic helper", "description": "Preferences for synthetic results", "icon": "extension", "schemaVersion": 1, "scopes": ["app", "collection", "group", "title"], "fields": [
+      {"id": "org.example.synthetic:enabled", "type": "boolean", "label": "Enable suggestions", "accessibleLabel": "Enable synthetic suggestions", "default": true, "scopes": ["app", "collection", "group", "title"]},
+      {"id": "org.example.synthetic:limit", "type": "number", "label": "Result limit", "accessibleLabel": "Maximum number of results", "default": 10, "min": 1, "max": 100, "scopes": ["app", "collection"], "enabledWhen": {"field": "org.example.synthetic:enabled", "equals": true}},
+      {"id": "org.example.synthetic:credential", "type": "credential", "label": "Connect account", "accessibleLabel": "Set up provider account securely", "scopes": ["app"]}
+    ]}
+  ]
+}

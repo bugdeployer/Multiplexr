@@ -1,0 +1,902 @@
+{
+  "catalog": {
+    "version": 1,
+    "collections": [
+      {
+        "id": "books:[]",
+        "name": "books:[]",
+        "subtype": "ebook",
+        "locked": false,
+        "includeInGlobal": true,
+        "roots": [
+          {
+            "uri": "content://local/books:%5B%5D",
+            "name": "Root"
+          }
+        ]
+      },
+      {
+        "id": "comics",
+        "name": "comics",
+        "subtype": "comics",
+        "locked": false,
+        "includeInGlobal": true,
+        "roots": [
+          {
+            "uri": "content://local/comics",
+            "name": "Root"
+          }
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "collectionId": "books:[]",
+        "id": "saga",
+        "subtype": "ebook",
+        "metadata": {
+          "title": "Saga",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        }
+      },
+      {
+        "collectionId": "comics",
+        "id": "series",
+        "subtype": "comics",
+        "metadata": {
+          "title": "Series",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        }
+      }
+    ],
+    "titles": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "subtype": "ebook",
+        "role": "publication",
+        "format": "epub",
+        "metadata": {
+          "title": "standalone",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/standalone",
+          "uri": "content://local/books:%5B%5D/standalone",
+          "name": "standalone",
+          "rootUri": "content://local/books:%5B%5D",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "OPS/chapter2.xhtml",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "collectionId": "books:[]",
+        "id": "volume",
+        "subtype": "ebook",
+        "role": "publication",
+        "format": "epub",
+        "metadata": {
+          "title": "volume",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/volume",
+          "uri": "content://local/books:%5B%5D/volume",
+          "name": "volume",
+          "rootUri": "content://local/books:%5B%5D",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "OPS/chapter2.xhtml",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "subtype": "comics",
+        "role": "publication",
+        "format": "cbz",
+        "metadata": {
+          "title": "issue",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/issue",
+          "uri": "content://local/comics/issue",
+          "name": "issue",
+          "rootUri": "content://local/comics",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "001.png",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "002.png",
+            "label": "Second"
+          }
+        ]
+      }
+    ],
+    "memberships": [
+      {
+        "collectionId": "books:[]",
+        "parentId": "saga",
+        "titleId": "volume",
+        "order": 0
+      },
+      {
+        "collectionId": "comics",
+        "parentId": "series",
+        "titleId": "issue",
+        "order": 0
+      }
+    ],
+    "progress": [],
+    "settings": [
+      {
+        "scope": "app",
+        "subtype": "ebook",
+        "values": {
+          "fontSize": 18,
+          "palette": "sepia"
+        }
+      },
+      {
+        "scope": "collection",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "values": {
+          "fontSize": 20
+        }
+      },
+      {
+        "scope": "group",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "entityId": "saga",
+        "values": {
+          "fontSize": 22
+        }
+      },
+      {
+        "scope": "title",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "entityId": "volume",
+        "values": {
+          "fontSize": 24
+        }
+      },
+      {
+        "scope": "title",
+        "subtype": "comics",
+        "collectionId": "comics",
+        "entityId": "issue",
+        "values": {
+          "comicMode": "webtoon",
+          "direction": "rtl",
+          "fit": "width"
+        }
+      }
+    ]
+  },
+  "index": {
+    "version": 1,
+    "entries": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "sourceKey": "source/standalone",
+        "rootUri": "content://local/books:%5B%5D",
+        "relativePath": "standalone",
+        "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "metadata": {
+          "title": "standalone",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "cover": "",
+        "manualFields": [],
+        "manualOrder": false,
+        "manualCover": false,
+        "encoding": ""
+      },
+      {
+        "collectionId": "books:[]",
+        "id": "volume",
+        "sourceKey": "source/volume",
+        "rootUri": "content://local/books:%5B%5D",
+        "relativePath": "volume",
+        "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "metadata": {
+          "title": "volume",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "cover": "",
+        "manualFields": [],
+        "manualOrder": false,
+        "manualCover": false,
+        "encoding": ""
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "sourceKey": "source/issue",
+        "rootUri": "content://local/comics",
+        "relativePath": "issue",
+        "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "metadata": {
+          "title": "issue",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "cover": "",
+        "manualFields": [],
+        "manualOrder": false,
+        "manualCover": false,
+        "encoding": ""
+      }
+    ],
+    "roots": [
+      {
+        "collectionId": "books:[]",
+        "uri": "content://local/books:%5B%5D",
+        "complete": true
+      },
+      {
+        "collectionId": "comics",
+        "uri": "content://local/comics",
+        "complete": true
+      }
+    ],
+    "replacements": [],
+    "orders": []
+  },
+  "management": {
+    "version": 1,
+    "entities": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "kind": "title",
+        "tags": [
+          "Favourite"
+        ],
+        "manualFields": [
+          "title"
+        ],
+        "cover": "",
+        "coverMode": "fit",
+        "manualCover": false,
+        "provider": "",
+        "candidateId": ""
+      },
+      {
+        "collectionId": "books:[]",
+        "id": "saga",
+        "kind": "group",
+        "tags": [
+          "Favourite"
+        ],
+        "manualFields": [
+          "title"
+        ],
+        "cover": "",
+        "coverMode": "fit",
+        "manualCover": false,
+        "provider": "",
+        "candidateId": ""
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "kind": "title",
+        "tags": [
+          "Favourite"
+        ],
+        "manualFields": [
+          "title"
+        ],
+        "cover": "",
+        "coverMode": "fit",
+        "manualCover": false,
+        "provider": "",
+        "candidateId": ""
+      }
+    ],
+    "collections": [
+      {
+        "collectionId": "books:[]",
+        "layout": "list",
+        "sort": "title",
+        "openAction": "details"
+      }
+    ],
+    "jobs": [
+      {
+        "collectionId": "books:[]",
+        "provider": "openlibrary",
+        "remaining": [
+          "volume"
+        ],
+        "done": 1,
+        "total": 2,
+        "entries": [
+          {
+            "id": "standalone",
+            "status": "review",
+            "error": "",
+            "candidates": [
+              {
+                "id": "/books/OL1M",
+                "values": {
+                  "title": "Matched edition",
+                  "authors": [
+                    "Author"
+                  ],
+                  "identifier": "OLID:OL1M",
+                  "edition": "OL1M"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "pageNotes": [
+      {
+        "id": "page-note",
+        "collectionId": "comics",
+        "titleId": "issue",
+        "sourceId": "source/issue",
+        "sourceRevision": "revision-1",
+        "pageId": "second",
+        "pageIndex": 1,
+        "offset": 0.6,
+        "kind": "note",
+        "note": "Panel detail",
+        "label": "Page 2"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "valid bookmark kind",
+      "path": [
+        "pageNotes",
+        0,
+        "kind"
+      ],
+      "value": "bookmark",
+      "valid": true
+    },
+    {
+      "name": "stale page note retained",
+      "path": [
+        "pageNotes",
+        0,
+        "sourceRevision"
+      ],
+      "value": "older",
+      "valid": true
+    },
+    {
+      "name": "opaque reading cover reference",
+      "path": [
+        "entities",
+        0,
+        "cover"
+      ],
+      "value": "reading-cover:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "valid": true
+    },
+    {
+      "name": "crop presentation",
+      "path": [
+        "entities",
+        0,
+        "coverMode"
+      ],
+      "value": "crop",
+      "valid": true
+    },
+    {
+      "name": "v2 rejected",
+      "path": [
+        "version"
+      ],
+      "value": 2,
+      "valid": false
+    },
+    {
+      "name": "secret field rejected",
+      "path": [
+        "apiKey"
+      ],
+      "value": "secret",
+      "valid": false
+    },
+    {
+      "name": "invalid entity owner",
+      "path": [
+        "entities",
+        0,
+        "collectionId"
+      ],
+      "value": "books",
+      "valid": false
+    },
+    {
+      "name": "invalid kind",
+      "path": [
+        "entities",
+        0,
+        "kind"
+      ],
+      "value": "playlist",
+      "valid": false
+    },
+    {
+      "name": "unknown title",
+      "path": [
+        "entities",
+        0,
+        "id"
+      ],
+      "value": "absent",
+      "valid": false
+    },
+    {
+      "name": "duplicate tags",
+      "path": [
+        "entities",
+        0,
+        "tags"
+      ],
+      "value": [
+        "a",
+        "a"
+      ],
+      "valid": false
+    },
+    {
+      "name": "overlong tag",
+      "path": [
+        "entities",
+        0,
+        "tags"
+      ],
+      "value": [
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ],
+      "valid": false
+    },
+    {
+      "name": "unknown manual field",
+      "path": [
+        "entities",
+        0,
+        "manualFields"
+      ],
+      "value": [
+        "source"
+      ],
+      "valid": false
+    },
+    {
+      "name": "duplicate manual field",
+      "path": [
+        "entities",
+        0,
+        "manualFields"
+      ],
+      "value": [
+        "title",
+        "title"
+      ],
+      "valid": false
+    },
+    {
+      "name": "URL is not portable artwork",
+      "path": [
+        "entities",
+        0,
+        "cover"
+      ],
+      "value": "https://example.com/a.jpg",
+      "valid": false
+    },
+    {
+      "name": "bad cover presentation",
+      "path": [
+        "entities",
+        0,
+        "coverMode"
+      ],
+      "value": "stretch",
+      "valid": false
+    },
+    {
+      "name": "strict artwork flag",
+      "path": [
+        "entities",
+        0,
+        "manualCover"
+      ],
+      "value": "true",
+      "valid": false
+    },
+    {
+      "name": "duplicate owner",
+      "path": [
+        "entities"
+      ],
+      "value": [
+        {
+          "collectionId": "books:[]",
+          "id": "standalone",
+          "kind": "title",
+          "tags": [
+            "Favourite"
+          ],
+          "manualFields": [
+            "title"
+          ],
+          "cover": "",
+          "coverMode": "fit",
+          "manualCover": false,
+          "provider": "",
+          "candidateId": ""
+        },
+        {
+          "collectionId": "books:[]",
+          "id": "standalone",
+          "kind": "title",
+          "tags": [
+            "Favourite"
+          ],
+          "manualFields": [
+            "title"
+          ],
+          "cover": "",
+          "coverMode": "fit",
+          "manualCover": false,
+          "provider": "",
+          "candidateId": ""
+        }
+      ],
+      "valid": false
+    },
+    {
+      "name": "unsupported collection layout",
+      "path": [
+        "collections",
+        0,
+        "layout"
+      ],
+      "value": "netflix",
+      "valid": false
+    },
+    {
+      "name": "unsupported opening action",
+      "path": [
+        "collections",
+        0,
+        "openAction"
+      ],
+      "value": "play",
+      "valid": false
+    },
+    {
+      "name": "unsupported sort",
+      "path": [
+        "collections",
+        0,
+        "sort"
+      ],
+      "value": "rating",
+      "valid": false
+    },
+    {
+      "name": "job unknown owner",
+      "path": [
+        "jobs",
+        0,
+        "collectionId"
+      ],
+      "value": "unknown",
+      "valid": false
+    },
+    {
+      "name": "job progress mismatch",
+      "path": [
+        "jobs",
+        0,
+        "done"
+      ],
+      "value": 0,
+      "valid": false
+    },
+    {
+      "name": "job invalid count",
+      "path": [
+        "jobs",
+        0,
+        "total"
+      ],
+      "value": 21,
+      "valid": false
+    },
+    {
+      "name": "job duplicate pending",
+      "path": [
+        "jobs",
+        0,
+        "remaining"
+      ],
+      "value": [
+        "volume",
+        "volume"
+      ],
+      "valid": false
+    },
+    {
+      "name": "job unknown title",
+      "path": [
+        "jobs",
+        0,
+        "remaining"
+      ],
+      "value": [
+        "missing"
+      ],
+      "valid": false
+    },
+    {
+      "name": "job unknown status",
+      "path": [
+        "jobs",
+        0,
+        "entries",
+        0,
+        "status"
+      ],
+      "value": "running",
+      "valid": false
+    },
+    {
+      "name": "job candidate identity missing",
+      "path": [
+        "jobs",
+        0,
+        "entries",
+        0,
+        "candidates",
+        0,
+        "id"
+      ],
+      "value": "",
+      "valid": false
+    },
+    {
+      "name": "job arbitrary provider fields",
+      "path": [
+        "jobs",
+        0,
+        "entries",
+        0,
+        "candidates",
+        0,
+        "values",
+        "sourceUri"
+      ],
+      "value": "file:///secret",
+      "valid": false
+    },
+    {
+      "name": "job invalid authors",
+      "path": [
+        "jobs",
+        0,
+        "entries",
+        0,
+        "candidates",
+        0,
+        "values",
+        "authors"
+      ],
+      "value": "Author",
+      "valid": false
+    },
+    {
+      "name": "job remote cover host rejected",
+      "path": [
+        "jobs",
+        0,
+        "entries",
+        0,
+        "candidates",
+        0,
+        "values",
+        "coverUrl"
+      ],
+      "value": "https://evil.test/b/id/2-L.jpg",
+      "valid": false
+    },
+    {
+      "name": "valid provider cover",
+      "path": [
+        "jobs",
+        0,
+        "entries",
+        0,
+        "candidates",
+        0,
+        "values",
+        "coverUrl"
+      ],
+      "value": "https://covers.openlibrary.org/b/id/2-L.jpg?default=false",
+      "valid": true
+    },
+    {
+      "name": "text owner rejected for page note",
+      "path": [
+        "pageNotes",
+        0,
+        "collectionId"
+      ],
+      "value": "books:[]",
+      "valid": false
+    },
+    {
+      "name": "mismatched current page ID",
+      "path": [
+        "pageNotes",
+        0,
+        "pageId"
+      ],
+      "value": "first",
+      "valid": false
+    },
+    {
+      "name": "out of range page index",
+      "path": [
+        "pageNotes",
+        0,
+        "pageIndex"
+      ],
+      "value": 5,
+      "valid": false
+    },
+    {
+      "name": "offset outside range",
+      "path": [
+        "pageNotes",
+        0,
+        "offset"
+      ],
+      "value": 1.1,
+      "valid": false
+    },
+    {
+      "name": "strict page index",
+      "path": [
+        "pageNotes",
+        0,
+        "pageIndex"
+      ],
+      "value": 1.5,
+      "valid": false
+    },
+    {
+      "name": "unsupported page annotation kind",
+      "path": [
+        "pageNotes",
+        0,
+        "kind"
+      ],
+      "value": "highlight",
+      "valid": false
+    },
+    {
+      "name": "duplicate page note IDs",
+      "path": [
+        "pageNotes"
+      ],
+      "value": [
+        {
+          "id": "page-note",
+          "collectionId": "comics",
+          "titleId": "issue",
+          "sourceId": "source/issue",
+          "sourceRevision": "revision-1",
+          "pageId": "second",
+          "pageIndex": 1,
+          "offset": 0.6,
+          "kind": "note",
+          "note": "Panel detail",
+          "label": "Page 2"
+        },
+        {
+          "id": "page-note",
+          "collectionId": "comics",
+          "titleId": "issue",
+          "sourceId": "source/issue",
+          "sourceRevision": "revision-1",
+          "pageId": "second",
+          "pageIndex": 1,
+          "offset": 0.6,
+          "kind": "note",
+          "note": "Panel detail",
+          "label": "Page 2"
+        }
+      ],
+      "valid": false
+    }
+  ]
+}

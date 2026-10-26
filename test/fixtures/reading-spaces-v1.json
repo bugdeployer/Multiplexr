@@ -1,0 +1,897 @@
+{
+  "catalog": {
+    "version": 1,
+    "collections": [
+      {
+        "id": "books:[]",
+        "name": "books:[]",
+        "subtype": "ebook",
+        "locked": false,
+        "includeInGlobal": true,
+        "roots": [
+          {
+            "uri": "content://local/books:%5B%5D",
+            "name": "Root"
+          }
+        ]
+      },
+      {
+        "id": "comics",
+        "name": "comics",
+        "subtype": "comics",
+        "locked": false,
+        "includeInGlobal": true,
+        "roots": [
+          {
+            "uri": "content://local/comics",
+            "name": "Root"
+          }
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "collectionId": "books:[]",
+        "id": "saga",
+        "subtype": "ebook",
+        "metadata": {
+          "title": "Saga",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        }
+      },
+      {
+        "collectionId": "comics",
+        "id": "series",
+        "subtype": "comics",
+        "metadata": {
+          "title": "Series",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        }
+      }
+    ],
+    "titles": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "subtype": "ebook",
+        "role": "publication",
+        "format": "epub",
+        "metadata": {
+          "title": "standalone",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/standalone",
+          "uri": "content://local/books:%5B%5D/standalone",
+          "name": "standalone",
+          "rootUri": "content://local/books:%5B%5D",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "OPS/chapter2.xhtml",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "collectionId": "books:[]",
+        "id": "volume",
+        "subtype": "ebook",
+        "role": "publication",
+        "format": "epub",
+        "metadata": {
+          "title": "volume",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/volume",
+          "uri": "content://local/books:%5B%5D/volume",
+          "name": "volume",
+          "rootUri": "content://local/books:%5B%5D",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "OPS/chapter2.xhtml",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "subtype": "comics",
+        "role": "publication",
+        "format": "cbz",
+        "metadata": {
+          "title": "issue",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/issue",
+          "uri": "content://local/comics/issue",
+          "name": "issue",
+          "rootUri": "content://local/comics",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "001.png",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "002.png",
+            "label": "Second"
+          }
+        ]
+      }
+    ],
+    "memberships": [
+      {
+        "collectionId": "books:[]",
+        "parentId": "saga",
+        "titleId": "volume",
+        "order": 0
+      },
+      {
+        "collectionId": "comics",
+        "parentId": "series",
+        "titleId": "issue",
+        "order": 0
+      }
+    ],
+    "progress": [],
+    "settings": [
+      {
+        "scope": "app",
+        "subtype": "ebook",
+        "values": {
+          "fontSize": 18,
+          "palette": "sepia"
+        }
+      },
+      {
+        "scope": "collection",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "values": {
+          "fontSize": 20
+        }
+      },
+      {
+        "scope": "group",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "entityId": "saga",
+        "values": {
+          "fontSize": 22
+        }
+      },
+      {
+        "scope": "title",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "entityId": "volume",
+        "values": {
+          "fontSize": 24
+        }
+      },
+      {
+        "scope": "title",
+        "subtype": "comics",
+        "collectionId": "comics",
+        "entityId": "issue",
+        "values": {
+          "comicMode": "webtoon",
+          "direction": "rtl",
+          "fit": "width"
+        }
+      }
+    ]
+  },
+  "index": {
+    "version": 1,
+    "entries": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "sourceKey": "source/standalone",
+        "rootUri": "content://local/books:%5B%5D",
+        "relativePath": "standalone",
+        "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "metadata": {
+          "title": "standalone",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "cover": "",
+        "manualFields": [],
+        "manualOrder": false,
+        "manualCover": false,
+        "encoding": ""
+      },
+      {
+        "collectionId": "books:[]",
+        "id": "volume",
+        "sourceKey": "source/volume",
+        "rootUri": "content://local/books:%5B%5D",
+        "relativePath": "volume",
+        "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "metadata": {
+          "title": "volume",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "cover": "",
+        "manualFields": [],
+        "manualOrder": false,
+        "manualCover": false,
+        "encoding": ""
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "sourceKey": "source/issue",
+        "rootUri": "content://local/comics",
+        "relativePath": "issue",
+        "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "metadata": {
+          "title": "issue",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "cover": "",
+        "manualFields": [],
+        "manualOrder": false,
+        "manualCover": false,
+        "encoding": ""
+      }
+    ],
+    "roots": [
+      {
+        "collectionId": "books:[]",
+        "uri": "content://local/books:%5B%5D",
+        "complete": true
+      },
+      {
+        "collectionId": "comics",
+        "uri": "content://local/comics",
+        "complete": true
+      }
+    ],
+    "replacements": [],
+    "orders": []
+  },
+  "management": {
+    "version": 1,
+    "entities": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "kind": "title",
+        "tags": [
+          "Favourite"
+        ],
+        "manualFields": [
+          "title"
+        ],
+        "cover": "",
+        "coverMode": "fit",
+        "manualCover": false,
+        "provider": "",
+        "candidateId": ""
+      },
+      {
+        "collectionId": "books:[]",
+        "id": "saga",
+        "kind": "group",
+        "tags": [
+          "Favourite"
+        ],
+        "manualFields": [
+          "title"
+        ],
+        "cover": "",
+        "coverMode": "fit",
+        "manualCover": false,
+        "provider": "",
+        "candidateId": ""
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "kind": "title",
+        "tags": [
+          "Favourite"
+        ],
+        "manualFields": [
+          "title"
+        ],
+        "cover": "",
+        "coverMode": "fit",
+        "manualCover": false,
+        "provider": "",
+        "candidateId": ""
+      }
+    ],
+    "collections": [
+      {
+        "collectionId": "books:[]",
+        "layout": "list",
+        "sort": "title",
+        "openAction": "details"
+      }
+    ],
+    "jobs": [
+      {
+        "collectionId": "books:[]",
+        "provider": "openlibrary",
+        "remaining": [
+          "volume"
+        ],
+        "done": 1,
+        "total": 2,
+        "entries": [
+          {
+            "id": "standalone",
+            "status": "review",
+            "error": "",
+            "candidates": [
+              {
+                "id": "/books/OL1M",
+                "values": {
+                  "title": "Matched edition",
+                  "authors": [
+                    "Author"
+                  ],
+                  "identifier": "OLID:OL1M",
+                  "edition": "OL1M"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "pageNotes": [
+      {
+        "id": "page-note",
+        "collectionId": "comics",
+        "titleId": "issue",
+        "sourceId": "source/issue",
+        "sourceRevision": "revision-1",
+        "pageId": "second",
+        "pageIndex": 1,
+        "offset": 0.6,
+        "kind": "note",
+        "note": "Panel detail",
+        "label": "Page 2"
+      }
+    ],
+    "lists": [
+      {
+        "collectionId": "books:[]",
+        "id": "favorites",
+        "name": "Weekend reading",
+        "titles": [
+          "volume",
+          "standalone"
+        ]
+      }
+    ],
+    "spaces": [
+      {
+        "collectionId": "books:[]",
+        "display": {
+          "source": "pinned",
+          "artwork": true,
+          "counts": true,
+          "confirmExit": true,
+          "hideWatched": false,
+          "startTab": 2,
+          "pins": [
+            "[\"books:[]\",\"standalone\"]"
+          ]
+        }
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "list names remain distinct from group membership",
+      "path": [
+        "lists",
+        0,
+        "name"
+      ],
+      "value": "Weekend favorites",
+      "valid": true
+    },
+    {
+      "name": "empty list retains its identity",
+      "path": [
+        "lists",
+        0,
+        "titles"
+      ],
+      "value": [],
+      "valid": true
+    },
+    {
+      "name": "list cannot cross owners",
+      "path": [
+        "lists",
+        0,
+        "titles"
+      ],
+      "value": [
+        "issue"
+      ],
+      "valid": false
+    },
+    {
+      "name": "list orphan owner",
+      "path": [
+        "lists",
+        0,
+        "collectionId"
+      ],
+      "value": "missing",
+      "valid": false
+    },
+    {
+      "name": "list missing title",
+      "path": [
+        "lists",
+        0,
+        "titles"
+      ],
+      "value": [
+        "missing"
+      ],
+      "valid": false
+    },
+    {
+      "name": "list duplicate title",
+      "path": [
+        "lists",
+        0,
+        "titles"
+      ],
+      "value": [
+        "volume",
+        "volume"
+      ],
+      "valid": false
+    },
+    {
+      "name": "list duplicate id",
+      "path": [
+        "lists"
+      ],
+      "value": [
+        {
+          "collectionId": "books:[]",
+          "id": "favorites",
+          "name": "Weekend reading",
+          "titles": [
+            "volume",
+            "standalone"
+          ]
+        },
+        {
+          "collectionId": "books:[]",
+          "id": "favorites",
+          "name": "Weekend reading",
+          "titles": [
+            "volume",
+            "standalone"
+          ]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "name": "list empty name",
+      "path": [
+        "lists",
+        0,
+        "name"
+      ],
+      "value": "",
+      "valid": false
+    },
+    {
+      "name": "list too long name",
+      "path": [
+        "lists",
+        0,
+        "name"
+      ],
+      "value": "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+      "valid": false
+    },
+    {
+      "name": "list title ids must be strings",
+      "path": [
+        "lists",
+        0,
+        "titles"
+      ],
+      "value": [
+        4
+      ],
+      "valid": false
+    },
+    {
+      "name": "space local display",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "source"
+      ],
+      "value": "recent",
+      "valid": true
+    },
+    {
+      "name": "space unknown source",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "source"
+      ],
+      "value": "network",
+      "valid": false
+    },
+    {
+      "name": "space orphan owner",
+      "path": [
+        "spaces",
+        0,
+        "collectionId"
+      ],
+      "value": "missing",
+      "valid": false
+    },
+    {
+      "name": "space duplicate owner",
+      "path": [
+        "spaces"
+      ],
+      "value": [
+        {
+          "collectionId": "books:[]",
+          "display": {
+            "source": "pinned",
+            "artwork": true,
+            "counts": true,
+            "confirmExit": true,
+            "hideWatched": false,
+            "startTab": 2,
+            "pins": [
+              "[\"books:[]\",\"standalone\"]"
+            ]
+          }
+        },
+        {
+          "collectionId": "books:[]",
+          "display": {
+            "source": "pinned",
+            "artwork": true,
+            "counts": true,
+            "confirmExit": true,
+            "hideWatched": false,
+            "startTab": 2,
+            "pins": [
+              "[\"books:[]\",\"standalone\"]"
+            ]
+          }
+        }
+      ],
+      "valid": false
+    },
+    {
+      "name": "space invalid tab",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "startTab"
+      ],
+      "value": 3,
+      "valid": false
+    },
+    {
+      "name": "space wrong numeric type",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "startTab"
+      ],
+      "value": 1.5,
+      "valid": false
+    },
+    {
+      "name": "space flag strict",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "counts"
+      ],
+      "value": 1,
+      "valid": false
+    },
+    {
+      "name": "space four pins",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "pins"
+      ],
+      "value": [
+        "[\"books:[]\", \"0\"]",
+        "[\"books:[]\", \"1\"]",
+        "[\"books:[]\", \"2\"]",
+        "[\"books:[]\", \"3\"]"
+      ],
+      "valid": false
+    },
+    {
+      "name": "space duplicate pins",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "pins"
+      ],
+      "value": [
+        "[\"books:[]\",\"volume\"]",
+        "[\"books:[]\",\"volume\"]"
+      ],
+      "valid": false
+    },
+    {
+      "name": "space invalid pin json",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "pins"
+      ],
+      "value": [
+        "bad"
+      ],
+      "valid": false
+    },
+    {
+      "name": "space pin empty owner",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "pins"
+      ],
+      "value": [
+        "[\"\",\"volume\"]"
+      ],
+      "valid": false
+    },
+    {
+      "name": "space pin wrong type",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "pins"
+      ],
+      "value": [
+        "[\"books:[]\",2]"
+      ],
+      "valid": false
+    },
+    {
+      "name": "space empty pins",
+      "path": [
+        "spaces",
+        0,
+        "display",
+        "pins"
+      ],
+      "value": [],
+      "valid": true
+    },
+    {
+      "name": "space private settings field",
+      "path": [
+        "spaces",
+        0,
+        "display"
+      ],
+      "value": {
+        "source": "pinned",
+        "artwork": true,
+        "counts": true,
+        "confirmExit": true,
+        "hideWatched": false,
+        "startTab": 2,
+        "pins": [
+          "[\"books:[]\",\"standalone\"]"
+        ],
+        "token": "secret"
+      },
+      "valid": false
+    },
+    {
+      "name": "collection card size persists",
+      "path": [
+        "collections",
+        0,
+        "cardSize"
+      ],
+      "value": 240,
+      "valid": true
+    },
+    {
+      "name": "collection card size lower bound",
+      "path": [
+        "collections",
+        0,
+        "cardSize"
+      ],
+      "value": 119,
+      "valid": false
+    },
+    {
+      "name": "collection card size upper bound",
+      "path": [
+        "collections",
+        0,
+        "cardSize"
+      ],
+      "value": 281,
+      "valid": false
+    },
+    {
+      "name": "collection card size wrong type",
+      "path": [
+        "collections",
+        0,
+        "cardSize"
+      ],
+      "value": "180",
+      "valid": false
+    },
+    {
+      "name": "collection selected text format",
+      "path": [
+        "collections",
+        0,
+        "formats"
+      ],
+      "value": [
+        "txt"
+      ],
+      "valid": true
+    },
+    {
+      "name": "collection selected text formats",
+      "path": [
+        "collections",
+        0,
+        "formats"
+      ],
+      "value": [
+        "epub",
+        "txt"
+      ],
+      "valid": true
+    },
+    {
+      "name": "collection formats cannot cross subtype",
+      "path": [
+        "collections",
+        0,
+        "formats"
+      ],
+      "value": [
+        "cbz"
+      ],
+      "valid": false
+    },
+    {
+      "name": "collection formats cannot be empty",
+      "path": [
+        "collections",
+        0,
+        "formats"
+      ],
+      "value": [],
+      "valid": false
+    },
+    {
+      "name": "collection formats unique",
+      "path": [
+        "collections",
+        0,
+        "formats"
+      ],
+      "value": [
+        "epub",
+        "epub"
+      ],
+      "valid": false
+    },
+    {
+      "name": "collection formats cannot imply DRM",
+      "path": [
+        "collections",
+        0,
+        "formats"
+      ],
+      "value": [
+        "azw"
+      ],
+      "valid": false
+    }
+  ]
+}

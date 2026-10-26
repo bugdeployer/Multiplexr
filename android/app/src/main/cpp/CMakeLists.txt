@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(multiplexr_sandbox C)
+add_library(multiplexr_sandbox SHARED sandbox.c quickjs/quickjs.c quickjs/cutils.c quickjs/dtoa.c quickjs/libregexp.c quickjs/libunicode.c)
+target_include_directories(multiplexr_sandbox PRIVATE quickjs)
+target_compile_definitions(multiplexr_sandbox PRIVATE _GNU_SOURCE CONFIG_VERSION="2026-06-04")
+target_compile_options(multiplexr_sandbox PRIVATE -fvisibility=hidden)
+target_link_libraries(multiplexr_sandbox m)
+target_link_options(multiplexr_sandbox PRIVATE "-Wl,-z,max-page-size=16384")

@@ -1,0 +1,540 @@
+{
+  "catalog": {
+    "version": 1,
+    "collections": [
+      {
+        "id": "books:[]",
+        "name": "books:[]",
+        "subtype": "ebook",
+        "locked": false,
+        "includeInGlobal": true,
+        "roots": [
+          {
+            "uri": "content://local/books:%5B%5D",
+            "name": "Root"
+          }
+        ]
+      },
+      {
+        "id": "comics",
+        "name": "comics",
+        "subtype": "comics",
+        "locked": false,
+        "includeInGlobal": true,
+        "roots": [
+          {
+            "uri": "content://local/comics",
+            "name": "Root"
+          }
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "collectionId": "books:[]",
+        "id": "saga",
+        "subtype": "ebook",
+        "metadata": {
+          "title": "Saga",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        }
+      },
+      {
+        "collectionId": "comics",
+        "id": "series",
+        "subtype": "comics",
+        "metadata": {
+          "title": "Series",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        }
+      }
+    ],
+    "titles": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "subtype": "ebook",
+        "role": "publication",
+        "format": "epub",
+        "metadata": {
+          "title": "standalone",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/standalone",
+          "uri": "content://local/books:%5B%5D/standalone",
+          "name": "standalone",
+          "rootUri": "content://local/books:%5B%5D",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "OPS/chapter2.xhtml",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "collectionId": "books:[]",
+        "id": "volume",
+        "subtype": "ebook",
+        "role": "publication",
+        "format": "epub",
+        "metadata": {
+          "title": "volume",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/volume",
+          "uri": "content://local/books:%5B%5D/volume",
+          "name": "volume",
+          "rootUri": "content://local/books:%5B%5D",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "OPS/chapter1.xhtml",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "OPS/chapter2.xhtml",
+            "label": "Second"
+          }
+        ]
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "subtype": "comics",
+        "role": "publication",
+        "format": "cbz",
+        "metadata": {
+          "title": "issue",
+          "authors": [
+            "Author"
+          ],
+          "description": "",
+          "language": "en",
+          "identifier": ""
+        },
+        "source": {
+          "id": "source/issue",
+          "uri": "content://local/comics/issue",
+          "name": "issue",
+          "rootUri": "content://local/comics",
+          "revision": "revision-1",
+          "available": true
+        },
+        "readingOrder": [
+          {
+            "id": "first",
+            "href": "001.png",
+            "label": "First"
+          },
+          {
+            "id": "second",
+            "href": "002.png",
+            "label": "Second"
+          }
+        ]
+      }
+    ],
+    "memberships": [
+      {
+        "collectionId": "books:[]",
+        "parentId": "saga",
+        "titleId": "volume",
+        "order": 0
+      },
+      {
+        "collectionId": "comics",
+        "parentId": "series",
+        "titleId": "issue",
+        "order": 0
+      }
+    ],
+    "progress": [
+      {
+        "collectionId": "books:[]",
+        "id": "standalone",
+        "sourceId": "source/standalone",
+        "sourceRevision": "revision-1",
+        "finished": false,
+        "location": {
+          "version": 1,
+          "kind": "text",
+          "resourceId": "second",
+          "locatorType": "cssSelector",
+          "locator": "#paragraph-2",
+          "progression": 0.35,
+          "before": "before",
+          "highlight": "text",
+          "after": "after"
+        }
+      },
+      {
+        "collectionId": "comics",
+        "id": "issue",
+        "sourceId": "source/issue",
+        "sourceRevision": "revision-1",
+        "finished": false,
+        "location": {
+          "version": 1,
+          "kind": "page",
+          "pageId": "second",
+          "pageIndex": 1,
+          "offset": 0.6
+        }
+      }
+    ],
+    "settings": [
+      {
+        "scope": "app",
+        "subtype": "ebook",
+        "values": {
+          "fontSize": 18,
+          "palette": "sepia"
+        }
+      },
+      {
+        "scope": "collection",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "values": {
+          "fontSize": 20
+        }
+      },
+      {
+        "scope": "group",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "entityId": "saga",
+        "values": {
+          "fontSize": 22
+        }
+      },
+      {
+        "scope": "title",
+        "subtype": "ebook",
+        "collectionId": "books:[]",
+        "entityId": "volume",
+        "values": {
+          "fontSize": 24
+        }
+      },
+      {
+        "scope": "title",
+        "subtype": "comics",
+        "collectionId": "comics",
+        "entityId": "issue",
+        "values": {
+          "comicMode": "webtoon",
+          "direction": "rtl",
+          "fit": "width"
+        }
+      }
+    ]
+  },
+  "annotations": {
+    "version": 1,
+    "items": [
+      {
+        "id": "note-1",
+        "collectionId": "books:[]",
+        "titleId": "standalone",
+        "sourceId": "source/standalone",
+        "sourceRevision": "revision-1",
+        "resourceId": "first",
+        "start": 0,
+        "end": 5,
+        "quote": "Hello",
+        "before": "",
+        "after": " world",
+        "kind": "note",
+        "note": "My note",
+        "label": "",
+        "color": "yellow"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "future annotation version",
+      "path": [
+        "version"
+      ],
+      "value": 2,
+      "valid": false
+    },
+    {
+      "name": "unknown annotation field",
+      "path": [
+        "items",
+        0,
+        "extra"
+      ],
+      "value": "secret",
+      "valid": false
+    },
+    {
+      "name": "missing owner",
+      "path": [
+        "items",
+        0,
+        "titleId"
+      ],
+      "value": "missing",
+      "valid": false
+    },
+    {
+      "name": "negative offset",
+      "path": [
+        "items",
+        0,
+        "start"
+      ],
+      "value": -1,
+      "valid": false
+    },
+    {
+      "name": "fractional offset",
+      "path": [
+        "items",
+        0,
+        "start"
+      ],
+      "value": 0.5,
+      "valid": false
+    },
+    {
+      "name": "reversed range",
+      "path": [
+        "items",
+        0,
+        "end"
+      ],
+      "value": 0,
+      "valid": false
+    },
+    {
+      "name": "mismatched quote length",
+      "path": [
+        "items",
+        0,
+        "quote"
+      ],
+      "value": "other text",
+      "valid": false
+    },
+    {
+      "name": "invalid kind",
+      "path": [
+        "items",
+        0,
+        "kind"
+      ],
+      "value": "audio",
+      "valid": false
+    },
+    {
+      "name": "invalid color",
+      "path": [
+        "items",
+        0,
+        "color"
+      ],
+      "value": "javascript:bad",
+      "valid": false
+    },
+    {
+      "name": "unknown current resource",
+      "path": [
+        "items",
+        0,
+        "resourceId"
+      ],
+      "value": "missing",
+      "valid": false
+    },
+    {
+      "name": "duplicate annotation",
+      "path": [
+        "items",
+        1
+      ],
+      "value": {
+        "id": "note-1",
+        "collectionId": "books:[]",
+        "titleId": "standalone",
+        "sourceId": "source/standalone",
+        "sourceRevision": "revision-1",
+        "resourceId": "first",
+        "start": 0,
+        "end": 5,
+        "quote": "Hello",
+        "before": "",
+        "after": " world",
+        "kind": "note",
+        "note": "My note",
+        "label": "",
+        "color": "yellow"
+      },
+      "valid": false
+    },
+    {
+      "name": "future source retained",
+      "path": [
+        "items",
+        0,
+        "sourceRevision"
+      ],
+      "value": "older",
+      "valid": true
+    },
+    {
+      "name": "orphan old resource retained",
+      "path": [
+        "items",
+        0
+      ],
+      "value": {
+        "id": "note-1",
+        "collectionId": "books:[]",
+        "titleId": "standalone",
+        "sourceId": "source/standalone",
+        "sourceRevision": "older",
+        "resourceId": "gone",
+        "start": 0,
+        "end": 5,
+        "quote": "Hello",
+        "before": "",
+        "after": " world",
+        "kind": "note",
+        "note": "My note",
+        "label": "",
+        "color": "yellow"
+      },
+      "valid": true
+    },
+    {
+      "name": "bookmark",
+      "path": [
+        "items",
+        0
+      ],
+      "value": {
+        "id": "note-1",
+        "collectionId": "books:[]",
+        "titleId": "standalone",
+        "sourceId": "source/standalone",
+        "sourceRevision": "revision-1",
+        "resourceId": "first",
+        "start": 0,
+        "end": 0,
+        "quote": "",
+        "before": "",
+        "after": " world",
+        "kind": "bookmark",
+        "note": "",
+        "label": "",
+        "color": "yellow"
+      },
+      "valid": true
+    },
+    {
+      "name": "highlight",
+      "path": [
+        "items",
+        0,
+        "kind"
+      ],
+      "value": "highlight",
+      "valid": true
+    },
+    {
+      "name": "note changes",
+      "path": [
+        "items",
+        0,
+        "note"
+      ],
+      "value": "New note",
+      "valid": true
+    },
+    {
+      "name": "oversized offset",
+      "path": [
+        "items",
+        0,
+        "end"
+      ],
+      "value": 8388609,
+      "valid": false
+    },
+    {
+      "name": "bookmark cannot contain range",
+      "path": [
+        "items",
+        0,
+        "kind"
+      ],
+      "value": "bookmark",
+      "valid": false
+    },
+    {
+      "name": "comic annotation not text range",
+      "path": [
+        "items",
+        0
+      ],
+      "value": {
+        "id": "note-1",
+        "collectionId": "comics",
+        "titleId": "issue",
+        "sourceId": "source/standalone",
+        "sourceRevision": "revision-1",
+        "resourceId": "first",
+        "start": 0,
+        "end": 5,
+        "quote": "Hello",
+        "before": "",
+        "after": " world",
+        "kind": "note",
+        "note": "My note",
+        "label": "",
+        "color": "yellow"
+      },
+      "valid": false
+    }
+  ]
+}

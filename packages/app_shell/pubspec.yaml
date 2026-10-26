@@ -1,0 +1,20 @@
+name: app_shell
+description: Reusable Flutter shell, theme authoring SDK, appearance and device security settings.
+version: 0.2.0
+publish_to: none
+environment:
+  sdk: ^3.13.5
+dependencies:
+  flutter:
+    sdk: flutter
+  crypto: ^3.0.7
+  pixelarticons: ^0.17.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+flutter:
+  assets:
+    - assets/themes/
+    - assets/fonts/
+    - assets/licenses/

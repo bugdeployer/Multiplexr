@@ -1,0 +1,11 @@
+name: shell_example
+publish_to: none
+environment:
+  sdk: ^3.13.5
+dependencies:
+  flutter:
+    sdk: flutter
+  app_shell:
+    path: ../
+flutter:
+  uses-material-design: true

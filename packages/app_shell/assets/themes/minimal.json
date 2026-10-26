@@ -1,0 +1,72 @@
+{
+  "format": "multiplexr-theme",
+  "version": 2,
+  "id": "minimal",
+  "name": "Minimal",
+  "style": "modern",
+  "font": "system",
+  "dark": {
+    "background": "#17191C",
+    "accent": "#D9DFE6"
+  },
+  "light": {
+    "background": "#FAFAFA",
+    "accent": "#252B32"
+  },
+  "tokens": {
+    "geometry": "square",
+    "font": "system",
+    "icons": "material",
+    "spacing": 0.9,
+    "density": 0,
+    "motionMs": 0,
+    "borderWidth": 1,
+    "cardRadius": 0,
+    "buttonRadius": 0,
+    "fieldRadius": 0,
+    "menuRadius": 0,
+    "dialogRadius": 0,
+    "elevation": 0,
+    "typography": {
+      "heading": {
+        "size": 24,
+        "weight": 700
+      },
+      "title": {
+        "size": 18,
+        "weight": 600
+      },
+      "body": {
+        "size": 14,
+        "height": 1.4
+      },
+      "label": {
+        "size": 12,
+        "weight": 500
+      },
+      "metadata": {
+        "size": 12,
+        "height": 1.4
+      },
+      "timestamp": {
+        "size": 12,
+        "weight": 500
+      }
+    },
+    "darkColors": {
+      "surface": "#17191C",
+      "content": "#FFFFFF",
+      "muted": "#C6CDD4",
+      "outline": "#838C97",
+      "playerOverlay": "#101820"
+    },
+    "lightColors": {
+      "surface": "#FAFAFA",
+      "content": "#17191C",
+      "muted": "#555D68",
+      "outline": "#737D89",
+      "playerOverlay": "#101820"
+    }
+  },
+  "assets": []
+}
