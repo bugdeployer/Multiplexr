@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'plugin_tools_page.dart';
 import 'plugin_settings_page.dart';
+import 'plugin_metadata_page.dart';
+import '../../features/metadata/application/metadata_contracts.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -276,6 +278,59 @@ class _PluginManagerPageState extends State<PluginManagerPage> {
         'collections': collections.toList(),
       });
     }
+  }
+
+  Future<void> testMetadata(PluginRecord plugin) async {
+    final contribution = plugin.contributions.firstWhere(
+      (c) => c['family'] == 'metadata.provider',
+    );
+    final scopes = (await manager.scopes())
+        .where(
+          (scope) =>
+              plugin.collections.contains(scope.collection) &&
+              MetadataEntityType.values.any(
+                (entity) => entity.name == scope.kind.name,
+              ) &&
+              ((contribution['kinds'] as List?)?.contains(scope.kind.name) ??
+                  true),
+        )
+        .toList();
+    if (!mounted) return;
+    if (scopes.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Allow a compatible collection in Permissions first.'),
+        ),
+      );
+      return;
+    }
+    final selected = await showDialog<PluginScope>(
+      context: context,
+      builder: (dialog) => SimpleDialog(
+        title: const Text('Test lookup in collection'),
+        children: [
+          for (final scope in scopes)
+            SimpleDialogOption(
+              onPressed: () => Navigator.pop(dialog, scope),
+              child: Text(scope.label),
+            ),
+        ],
+      ),
+    );
+    if (!mounted || selected == null) return;
+    await Navigator.push<Object?>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => PluginMetadataPage(
+          collection: selected.collection,
+          kind: selected.kind,
+          entity: MetadataEntityType.values.byName(selected.kind.name),
+          query: '',
+          selectOnly: true,
+          initialProvider: contribution['id'] as String,
+        ),
+      ),
+    );
   }
 
   Future<void> remove(PluginRecord plugin) async {
@@ -708,6 +763,15 @@ class _PluginManagerPageState extends State<PluginManagerPage> {
                                   ),
                                 ),
                                 child: const Text('Settings'),
+                              ),
+                            if (plugin.enabled &&
+                                plugin.contributions.any(
+                                  (c) => c['family'] == 'metadata.provider',
+                                ))
+                              TextButton(
+                                onPressed: () =>
+                                    action(() => testMetadata(plugin)),
+                                child: const Text('Test lookup'),
                               ),
                             TextButton(
                               onPressed: () => action(() => install()),

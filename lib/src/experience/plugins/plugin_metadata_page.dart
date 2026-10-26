@@ -19,17 +19,25 @@ class PluginMetadataPage extends StatefulWidget {
     required this.query,
     this.target,
     this.selectOnly = false,
+    this.initialProvider,
   });
   final String collection, query;
   final ExtensionMedia kind;
   final MetadataEntityType entity;
   final MetadataTarget? target;
   final bool selectOnly;
+  final String? initialProvider;
   @override
   State<PluginMetadataPage> createState() => _PluginMetadataPageState();
 }
 
 class _PluginMetadataPageState extends State<PluginMetadataPage> {
+  @override
+  void initState() {
+    super.initState();
+    provider = widget.initialProvider;
+  }
+
   late final query = TextEditingController(text: widget.query);
   String? provider, error, cursor;
   MetadataSearchPage? page;

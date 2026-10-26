@@ -8,6 +8,14 @@ import java.io.File
 import java.net.InetAddress
 
 class PluginPlatformTest {
+    @Test fun expectedProviderDenialsAreValidRepliesInsteadOfQuarantineFailures() {
+        for (code in listOf("permission_denied", "resource_limit", "deadline_exceeded")) {
+            assertTrue(PluginReply.valid("""{"v":1,"id":"invoke","error":{"code":"$code"}}""", "invoke"))
+        }
+        for (raw in listOf("""{"v":1,"id":"invoke","error":{"code":"invented"}}""", """{"v":1,"id":"invoke","error":{"code":"permission_denied","secret":"no"}}""", """{"v":1,"id":"other","result":null}""")) {
+            assertFalse(PluginReply.valid(raw, "invoke"))
+        }
+    }
     @Test fun atomicReplacementKeepsOnlyCompleteCommittedBytes() {
         val root=kotlin.io.path.createTempDirectory("plugin-atomic").toFile()
         try {

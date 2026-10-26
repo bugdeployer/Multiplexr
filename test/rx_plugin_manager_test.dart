@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:multiplexr/src/experience/plugins/plugin_manager_page.dart';
 import 'package:multiplexr/src/experience/plugins/plugin_manager.dart';
+import 'package:multiplexr/src/experience/plugins/plugin_contribution_page.dart';
+import 'package:multiplexr/src/features/catalog/application/extension_catalog.dart';
 
 import 'rx_plugin_gateway_test.dart' show Harness, Backend, record;
 
@@ -22,6 +24,62 @@ class RefreshBackend extends Backend {
 }
 
 void main() {
+  testWidgets(
+    'provider test lookup selects a granted collection without mutating it',
+    (tester) async {
+      final h = Harness();
+      h.backend.records = [
+        {
+          ...record(capabilities: ['metadata.provide']),
+          'contributions': [
+            {
+              'id': 'org.example.tool:books',
+              'family': 'metadata.provider',
+              'title': 'Books provider',
+              'handler': 'metadata.search',
+              'kinds': ['ebook'],
+            },
+          ],
+        },
+      ];
+      h.backend.execute = (_) async => {
+        'items': [
+          {'id': 'org.example.tool:dune', 'title': 'Dune'},
+        ],
+        'nextCursor': null,
+      };
+      final manager = PluginManager(
+        backend: h.backend,
+        gateway: h.gateway,
+        scopes: () async => [
+          const PluginScope('private-id', ExtensionMedia.ebook, 'Books'),
+        ],
+      );
+      await tester.pumpWidget(
+        PluginPlatformScope(
+          manager: manager,
+          child: MaterialApp(home: PluginManagerPage(manager: manager)),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Manage'));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('Test lookup'));
+      await tester.tap(find.text('Test lookup'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Books'));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'Dune');
+      await tester.tap(find.text('Search'));
+      await tester.pumpAndSettle();
+      expect(find.text('Dune'), findsOneWidget);
+      await tester.tap(find.text('Dune'));
+      await tester.pumpAndSettle();
+      expect(h.mutations.commits, 0);
+      await tester.pumpWidget(const SizedBox());
+      manager.dispose();
+    },
+  );
   test('out-of-order inventory cannot re-enable stale contributions; read failure unmounts', () async {
     final h = Harness(), backend = RefreshBackend();
     final manager = PluginManager(

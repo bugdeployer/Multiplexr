@@ -11,6 +11,10 @@ ROOT = Path(__file__).resolve().parent.parent
 ANDROID = '{http://schemas.android.com/apk/res/android}'
 
 class PluginRuntimeBoundaryTest(unittest.TestCase):
+    def test_jni_callback_is_kept_in_minified_release_builds(self):
+        source = (ROOT / 'android/app/src/main/kotlin/com/bugdeployer/multiplexr/plugins/QuickJs.kt').read_text(encoding='utf-8')
+        self.assertRegex(source, r'@Keep\s+fun hostCall\(request: ByteArray\)')
+
     def test_release_service_is_enabled_nonexported_and_os_isolated(self):
         manifest = ET.parse(ROOT / 'android/app/src/main/AndroidManifest.xml')
         service = next(s for s in manifest.findall('.//service')

@@ -125,11 +125,7 @@ internal class PluginHost(private val activity: Activity, private val channel: M
             })
         }) { value,error ->
             val current = active == invocation; active = null; calls.forEach { it.cancel() }; calls.clear(); store.endInvocation()
-            val valid = error == null && value != null && try {
-                val response=JSONObject(value)
-                PluginPackage.exact(response,setOf("v","id","result"))
-                response.get("v") == 1 && response.getString("id") == envelope.getString("id")
-            } catch(_: Exception) { false }
+            val valid = error == null && value != null && PluginReply.valid(value, envelope.getString("id"))
             if(valid && current) try { store.success(invocation.id,invocation.revision) } catch(_: Exception) { }
             if((error != null || !valid) && error != "cancelled") try { store.failure(invocation.id) } catch(_: Exception) { }
             channel.invokeMethod("changed",null)
