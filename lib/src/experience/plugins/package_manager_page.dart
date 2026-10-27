@@ -11,7 +11,9 @@ class PackageManagerPage extends StatelessWidget {
     super.key,
     required this.manager,
     required this.settings,
+    this.onBack,
   });
+  final VoidCallback? onBack;
   final PluginManager manager;
   final ShellSettingsController settings;
   @override
@@ -20,6 +22,7 @@ class PackageManagerPage extends StatelessWidget {
     child: Scaffold(
       appBar: AppBar(
         title: const Text('Plugins & themes'),
+        leading: onBack == null ? null : BackButton(onPressed: onBack),
         bottom: const TabBar(
           tabs: [
             Tab(text: 'Extensions'),

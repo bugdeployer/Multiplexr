@@ -573,6 +573,10 @@
       "layer": "presentation",
       "reason": "Host-scoped extension tools, discovery evidence and file transfer confirmation."
     },
+    "lib/src/experience/plugins/plugin_navigation_shell.dart": {
+      "layer": "presentation",
+      "reason": "Nested package navigation with the app bottom bar retained."
+    },
     "lib/src/experience/plugins/package_manager_page.dart": {
       "layer": "presentation",
       "reason": "Shared host package navigation for executable extensions and validated data-only themes."

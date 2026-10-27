@@ -1,3 +1,4 @@
+import 'experience/plugins/plugin_navigation_shell.dart';
 import 'experience/plugins/package_manager_page.dart';
 import 'experience/plugins/plugin_contribution_page.dart';
 import 'experience/plugins/plugin_settings_page.dart';
@@ -481,55 +482,76 @@ class _AppShellState extends State<AppShell> {
                     ),
                   ),
                 ),
-          bottomNavigationBar: !s.ready || s.locked || s.covered
-              ? null
-              : DecoratedBox(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      top: BorderSide(
-                        color: color.outlineVariant.withValues(alpha: .5),
-                      ),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SessionMiniPlayer(playback: music),
-                      ShellNavigationBar(
-                        animationDuration:
-                            s.reduceMotion ||
-                                MediaQuery.disableAnimationsOf(context)
-                            ? Duration.zero
-                            : AppMotion.duration(context),
-                        selectedIndex: page,
-                        onDestinationSelected: (v) => setState(() {
-                          page = v;
-                          settingsPage = 0;
-                        }),
-                        destinations: [
-                          NavigationDestination(
-                            icon: const AppIcon(AppIconRole.library),
-                            selectedIcon: const AppIcon(AppIconRole.library),
-                            label: 'LIBRARY',
-                          ),
-                          NavigationDestination(
-                            icon: const AppIcon(AppIconRole.spaces),
-                            selectedIcon: const AppIcon(AppIconRole.spaces),
-                            label: 'SPACES',
-                          ),
-                          NavigationDestination(
-                            icon: const AppIcon(AppIconRole.settings),
-                            label: 'SETTINGS',
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+          bottomNavigationBar: shellBottomBar(),
         ),
       ),
     );
   }
+
+  Widget? shellBottomBar({VoidCallback? onNavigate}) =>
+      !s.ready || s.locked || s.covered
+      ? null
+      : DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: Theme.of(context).colorScheme.outlineVariant
+                    .withValues(alpha: .5),
+              ),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SessionMiniPlayer(playback: music),
+              ShellNavigationBar(
+                animationDuration:
+                    s.reduceMotion || MediaQuery.disableAnimationsOf(context)
+                    ? Duration.zero
+                    : AppMotion.duration(context),
+                selectedIndex: page,
+                onDestinationSelected: (v) {
+                  onNavigate?.call();
+                  setState(() {
+                    page = v;
+                    settingsPage = 0;
+                  });
+                },
+                destinations: [
+                  NavigationDestination(
+                    icon: const AppIcon(AppIconRole.library),
+                    selectedIcon: const AppIcon(AppIconRole.library),
+                    label: 'LIBRARY',
+                  ),
+                  NavigationDestination(
+                    icon: const AppIcon(AppIconRole.spaces),
+                    selectedIcon: const AppIcon(AppIconRole.spaces),
+                    label: 'SPACES',
+                  ),
+                  NavigationDestination(
+                    icon: const AppIcon(AppIconRole.settings),
+                    label: 'SETTINGS',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+
+  Future<void> openPackages() => Navigator.push<void>(
+    context,
+    MaterialPageRoute(
+      builder: (routeContext) => PluginNavigationShell(
+        bottomBar: () =>
+            shellBottomBar(onNavigate: () => Navigator.pop(routeContext)),
+        page: PackageManagerPage(
+          manager: widget.plugins!,
+          settings: widget.settings,
+          onBack: () => Navigator.pop(routeContext),
+        ),
+      ),
+    ),
+  );
 
   Future<void> createCollection() async {
     String? readingId;
@@ -1288,15 +1310,7 @@ class _AppShellState extends State<AppShell> {
         const AppGap(16),
         if (widget.plugins != null)
           FilledButton(
-            onPressed: () => Navigator.push<void>(
-              context,
-              MaterialPageRoute(
-                builder: (_) => PackageManagerPage(
-                  manager: widget.plugins!,
-                  settings: widget.settings,
-                ),
-              ),
-            ),
+            onPressed: () => openPackages(),
             child: const Text('Manage provider plugins'),
           ),
       ];
@@ -1333,15 +1347,7 @@ class _AppShellState extends State<AppShell> {
               title: const Text('Plugins & themes'),
               subtitle: const Text('Extensions, themes and package access'),
               trailing: const AppIcon(AppIconRole.disclosure),
-              onTap: () => Navigator.push<void>(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => PackageManagerPage(
-                    manager: widget.plugins!,
-                    settings: widget.settings,
-                  ),
-                ),
-              ),
+              onTap: () => openPackages(),
             ),
             const Divider(height: 24),
           ],
